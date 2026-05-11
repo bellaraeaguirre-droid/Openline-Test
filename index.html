@@ -10,419 +10,182 @@
     :root {
       --cream: #FDF6EC;
       --pink: #F2B8C0;
-      --pink-deep: #E8849A;
       --red: #C94040;
       --yellow: #F7C948;
       --yellow-light: #FDE98A;
       --sky: #A8CCE0;
-      --sky-light: #D4EAF5;
       --dark: #2A1A1A;
       --mid: #6B3D3D;
-      --white: #FFFFFF;
     }
 
 ```
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+body { background: var(--cream); font-family: 'DM Sans', sans-serif; color: var(--dark); overflow-x: hidden; }
 
-body {
-  background: var(--cream);
-  font-family: 'DM Sans', sans-serif;
-  color: var(--dark);
-  overflow-x: hidden;
-}
-
+/* NAV */
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 48px;
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: var(--cream);
-  border-bottom: 2px solid var(--pink);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 48px; position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100; background: var(--cream); border-bottom: 2px solid var(--pink);
 }
-
-.nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  font-weight: 900;
-  color: var(--red);
-  font-style: italic;
-}
-
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: var(--red); font-style: italic; }
 .nav-links { display: flex; gap: 36px; list-style: none; }
-
-.nav-links a {
-  color: var(--dark);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
+.nav-links a { color: var(--dark); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: var(--red); }
-
-.nav-cta {
-  background: var(--red);
-  color: white;
-  border: 2px solid var(--dark);
-  padding: 9px 22px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  box-shadow: 3px 3px 0 var(--dark);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
+.nav-cta { background: var(--red); color: white; border: 2px solid var(--dark); padding: 9px 22px; border-radius: 100px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; box-shadow: 3px 3px 0 var(--dark); transition: transform 0.15s, box-shadow 0.15s; }
 .nav-cta:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--dark); }
 
-.hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 120px 48px 80px;
-  gap: 60px;
-  position: relative;
-}
-
-.hero-bg-blob {
-  position: absolute;
-  top: 80px; right: 0;
-  width: 52%; height: calc(100% - 80px);
-  background: var(--pink);
-  border-radius: 48px 0 0 48px;
-  opacity: 0.4;
-  z-index: 0;
-}
-
+/* HERO */
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 120px 48px 80px; gap: 60px; position: relative; }
+.hero-bg-blob { position: absolute; top: 80px; right: 0; width: 52%; height: calc(100% - 80px); background: var(--pink); border-radius: 48px 0 0 48px; opacity: 0.4; z-index: 0; }
 .hero-left { position: relative; z-index: 1; animation: fadeUp 0.8s ease both; }
-
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--yellow);
-  color: var(--dark);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 16px;
-  border-radius: 100px;
-  margin-bottom: 28px;
-  border: 2px solid var(--dark);
-  box-shadow: 2px 2px 0 var(--dark);
-}
-
-.hero-tag-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--red);
-}
-
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(48px, 5.5vw, 72px);
-  font-weight: 900;
-  line-height: 1.0;
-  letter-spacing: -2px;
-  color: var(--dark);
-  margin-bottom: 24px;
-}
-
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); color: var(--dark); font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px; border: 2px solid var(--dark); box-shadow: 2px 2px 0 var(--dark); }
+.hero-tag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 5.5vw, 72px); font-weight: 900; line-height: 1.0; letter-spacing: -2px; color: var(--dark); margin-bottom: 24px; }
 h1 em { font-style: italic; color: var(--red); }
-
-.hero-sub {
-  font-size: 17px;
-  color: var(--mid);
-  line-height: 1.65;
-  max-width: 420px;
-  margin-bottom: 40px;
-  font-weight: 400;
-}
-
+.hero-sub { font-size: 17px; color: var(--mid); line-height: 1.65; max-width: 420px; margin-bottom: 16px; font-weight: 400; }
+.hero-apps-note { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 36px; }
+.hero-apps-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { background: white; border: 1.5px solid var(--dark); border-radius: 100px; padding: 3px 10px; font-size: 12px; font-weight: 600; }
 .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-
-.btn-primary {
-  background: var(--red);
-  color: white;
-  border: 2px solid var(--dark);
-  padding: 14px 32px;
-  border-radius: 100px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  box-shadow: 3px 3px 0 var(--dark);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
+.btn-primary { background: var(--red); color: white; border: 2px solid var(--dark); padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; box-shadow: 3px 3px 0 var(--dark); transition: transform 0.15s, box-shadow 0.15s; }
 .btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--dark); }
-
-.btn-ghost {
-  background: white;
-  border: 2px solid var(--dark);
-  color: var(--dark);
-  padding: 13px 28px;
-  border-radius: 100px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  box-shadow: 3px 3px 0 var(--dark);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
+.btn-ghost { background: white; border: 2px solid var(--dark); color: var(--dark); padding: 13px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; box-shadow: 3px 3px 0 var(--dark); transition: transform 0.15s, box-shadow 0.15s; }
 .btn-ghost:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--dark); }
 
-.hero-right {
-  position: relative; z-index: 1;
-  display: flex; justify-content: center; align-items: center;
-  animation: fadeUp 0.8s ease 0.15s both;
-}
-
+/* PHONE */
+.hero-right { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; animation: fadeUp 0.8s ease 0.15s both; }
 .phone-wrap { position: relative; width: 260px; animation: floatY 4s ease-in-out infinite; }
-
-.phone-frame {
-  width: 260px;
-  background: var(--cream);
-  border-radius: 36px;
-  overflow: hidden;
-  border: 2.5px solid var(--dark);
-  box-shadow: 6px 6px 0 var(--dark);
-  padding: 16px 14px 24px;
-}
-
-.phone-status {
-  display: flex; justify-content: space-between;
-  font-size: 10px; color: var(--dark); font-weight: 700;
-  margin-bottom: 12px; padding: 0 4px;
-}
-
-.phone-app-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px; color: var(--red);
-  font-weight: 900; font-style: italic;
-  margin-bottom: 10px; padding: 0 4px;
-}
-
-.phone-consent {
-  background: #D4F0D8;
-  border: 1.5px solid #7CC98A;
-  border-radius: 10px;
-  padding: 7px 10px;
-  display: flex; align-items: center; gap: 7px;
-  margin-bottom: 12px;
-}
-
+.phone-frame { width: 260px; background: var(--cream); border-radius: 36px; overflow: hidden; border: 2.5px solid var(--dark); box-shadow: 6px 6px 0 var(--dark); padding: 16px 14px 24px; }
+.phone-status { display: flex; justify-content: space-between; font-size: 10px; color: var(--dark); font-weight: 700; margin-bottom: 12px; padding: 0 4px; }
+.phone-app-name { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--red); font-weight: 900; font-style: italic; margin-bottom: 10px; padding: 0 4px; }
+.phone-consent { background: #D4F0D8; border: 1.5px solid #7CC98A; border-radius: 10px; padding: 7px 10px; display: flex; align-items: center; gap: 7px; margin-bottom: 12px; }
 .phone-consent-dot { width: 7px; height: 7px; border-radius: 50%; background: #3A9A48; flex-shrink: 0; }
 .phone-consent-text { color: #1A5A24; font-size: 10px; font-weight: 700; }
-
-.phone-card {
-  background: white;
-  border: 1.5px solid var(--dark);
-  border-radius: 14px;
-  padding: 12px;
-  margin-bottom: 8px;
-  box-shadow: 2px 2px 0 var(--dark);
-}
-
+.phone-card { background: white; border: 1.5px solid var(--dark); border-radius: 14px; padding: 12px; margin-bottom: 8px; box-shadow: 2px 2px 0 var(--dark); }
 .phone-card-top { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-
-.phone-avatar {
-  width: 32px; height: 32px;
-  border-radius: 9px;
-  border: 1.5px solid var(--dark);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 800; flex-shrink: 0;
-  font-family: 'Playfair Display', serif;
-}
-
+.phone-avatar { width: 32px; height: 32px; border-radius: 9px; border: 1.5px solid var(--dark); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0; font-family: 'Playfair Display', serif; }
 .phone-card-name { color: var(--dark); font-size: 12px; font-weight: 700; flex: 1; }
-
-.phone-card-status {
-  font-size: 9px; font-weight: 700;
-  padding: 2px 8px; border-radius: 100px; border: 1.5px solid;
-}
-
-.phone-activity {
-  background: var(--cream);
-  border: 1px solid rgba(42,26,26,0.15);
-  border-radius: 9px; padding: 8px 10px;
-  display: flex; align-items: center; gap: 8px;
-}
-
+.phone-card-status { font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 100px; border: 1.5px solid; }
+.phone-activity { background: var(--cream); border: 1px solid rgba(42,26,26,0.15); border-radius: 9px; padding: 8px 10px; display: flex; align-items: center; gap: 8px; }
 .phone-activity-icon { font-size: 15px; }
 .phone-activity-text { flex: 1; }
 .phone-activity-name { color: var(--dark); font-size: 11px; font-weight: 600; margin-bottom: 1px; }
 .phone-activity-domain { color: var(--mid); font-size: 9px; }
 .phone-activity-time { font-size: 11px; font-weight: 700; }
-
-.float-badge {
-  position: absolute;
-  border-radius: 12px; padding: 8px 14px;
-  font-size: 11px; font-weight: 700;
-  color: var(--dark); border: 2px solid var(--dark);
-  white-space: nowrap;
-}
-
+.float-badge { position: absolute; border-radius: 12px; padding: 8px 14px; font-size: 11px; font-weight: 700; color: var(--dark); border: 2px solid var(--dark); white-space: nowrap; }
 .float-badge-1 { top: 20px; right: -44px; background: var(--yellow); box-shadow: 3px 3px 0 var(--dark); }
 .float-badge-2 { bottom: 30px; left: -48px; background: var(--sky); box-shadow: 3px 3px 0 var(--dark); }
 
+/* SECTIONS */
 .section { padding: 100px 48px; }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(34px, 4vw, 50px); font-weight: 900; line-height: 1.1; letter-spacing: -1.5px; color: var(--dark); margin-bottom: 52px; max-width: 540px; }
 
-.section-label {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--red); margin-bottom: 14px;
-}
+/* WHAT IT SHOWS */
+.shows { background: var(--yellow); border-top: 2px solid var(--dark); border-bottom: 2px solid var(--dark); padding: 80px 48px; }
+.shows .section-title { color: var(--dark); margin-bottom: 40px; }
+.shows-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.shows-card { background: white; border: 2px solid var(--dark); border-radius: 20px; padding: 24px 20px; box-shadow: 3px 3px 0 var(--dark); text-align: center; }
+.shows-icon { font-size: 32px; margin-bottom: 12px; }
+.shows-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+.shows-desc { font-size: 13px; color: var(--mid); line-height: 1.5; }
 
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(34px, 4vw, 50px);
-  font-weight: 900; line-height: 1.1;
-  letter-spacing: -1.5px; color: var(--dark);
-  margin-bottom: 52px; max-width: 540px;
-}
-
+/* STEPS */
 .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-
-.step {
-  border-radius: 24px; padding: 32px 28px;
-  border: 2px solid var(--dark);
-  box-shadow: 4px 4px 0 var(--dark);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
+.step { border-radius: 24px; padding: 32px 28px; border: 2px solid var(--dark); box-shadow: 4px 4px 0 var(--dark); transition: transform 0.2s, box-shadow 0.2s; }
 .step:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--dark); }
 .step-1 { background: var(--pink); }
 .step-2 { background: var(--yellow); }
 .step-3 { background: var(--sky); }
-
-.step-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 44px; font-weight: 900;
-  color: rgba(42,26,26,0.15); line-height: 1; margin-bottom: 16px;
-}
-
+.step-num { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 900; color: rgba(42,26,26,0.15); line-height: 1; margin-bottom: 16px; }
 .step-icon { font-size: 28px; margin-bottom: 14px; }
-
-.step-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 21px; font-weight: 800;
-  color: var(--dark); margin-bottom: 10px;
-}
-
+.step-title { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
 .step-desc { font-size: 14px; color: var(--dark); line-height: 1.65; opacity: 0.75; }
 
-.why {
-  background: var(--red);
-  padding: 100px 48px;
-  border-top: 2px solid var(--dark);
-  border-bottom: 2px solid var(--dark);
-}
+/* NOT SURVEILLANCE */
+.honest { background: var(--dark); padding: 100px 48px; }
+.honest .section-label { color: var(--yellow); }
+.honest .section-title { color: white; max-width: 600px; }
+.honest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.honest-row { display: flex; align-items: flex-start; gap: 16px; padding: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; }
+.honest-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.honest-title { font-size: 15px; font-weight: 700; color: white; margin-bottom: 4px; }
+.honest-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
+/* WHY */
+.why { background: var(--red); padding: 100px 48px; border-top: 2px solid var(--dark); border-bottom: 2px solid var(--dark); }
 .why .section-label { color: var(--yellow); }
 .why .section-title { color: white; }
-
 .why-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
-
-.why-card {
-  border-radius: 20px; padding: 28px 24px;
-  border: 2px solid var(--dark);
-  box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-  transition: transform 0.2s;
-}
-
+.why-card { border-radius: 20px; padding: 28px 24px; border: 2px solid var(--dark); box-shadow: 3px 3px 0 rgba(0,0,0,0.2); transition: transform 0.2s; }
 .why-card:hover { transform: translateY(-3px); }
 .why-card:nth-child(1) { background: var(--pink); }
 .why-card:nth-child(2) { background: var(--yellow); }
 .why-card:nth-child(3) { background: var(--sky); }
 .why-card:nth-child(4) { background: var(--yellow-light); }
-
 .why-card-icon { font-size: 26px; margin-bottom: 12px; }
-
-.why-card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px; font-weight: 800;
-  color: var(--dark); margin-bottom: 8px;
-}
-
+.why-card-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
 .why-card-desc { font-size: 14px; color: var(--dark); line-height: 1.65; opacity: 0.75; }
 
+/* TESTIMONIALS */
+.testimonials { padding: 100px 48px; background: var(--cream); }
+.testimonials .section-title { margin-bottom: 48px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.testimonial { background: white; border: 2px solid var(--dark); border-radius: 20px; padding: 28px 24px; box-shadow: 4px 4px 0 var(--dark); }
+.testimonial-quote { font-size: 15px; color: var(--dark); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 10px; }
+.testimonial-avatar { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--dark); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; font-family: 'Playfair Display', serif; flex-shrink: 0; }
+.testimonial-name { font-size: 13px; font-weight: 700; color: var(--dark); }
+.testimonial-detail { font-size: 11px; color: var(--mid); }
+.testimonial-stars { color: var(--yellow); font-size: 13px; margin-bottom: 14px; }
+
+/* FAQ */
+.faq { padding: 100px 48px; background: var(--pink); border-top: 2px solid var(--dark); }
+.faq .section-title { color: var(--dark); }
+.faq-list { max-width: 720px; }
+.faq-item { border: 2px solid var(--dark); border-radius: 16px; margin-bottom: 12px; overflow: hidden; box-shadow: 3px 3px 0 var(--dark); background: white; }
+.faq-q { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 700; color: var(--dark); gap: 16px; }
+.faq-arrow { font-size: 18px; transition: transform 0.2s; flex-shrink: 0; }
+.faq-a { display: none; padding: 0 24px 20px; font-size: 14px; color: var(--mid); line-height: 1.7; border-top: 1.5px solid rgba(42,26,26,0.1); padding-top: 16px; margin: 0 24px 20px; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-item.open .faq-a { display: block; }
+
+/* WAITLIST */
 .waitlist { padding: 120px 48px; text-align: center; max-width: 640px; margin: 0 auto; }
 .waitlist .section-title { margin: 0 auto 16px; text-align: center; }
-
 .waitlist-sub { font-size: 16px; color: var(--mid); margin-bottom: 40px; line-height: 1.6; }
-
 .waitlist-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto 16px; }
-
-.waitlist-input {
-  flex: 1; padding: 14px 20px;
-  border: 2px solid var(--dark); border-radius: 100px;
-  font-size: 15px; font-family: 'DM Sans', sans-serif;
-  background: white; color: var(--dark); outline: none;
-  box-shadow: 3px 3px 0 var(--dark);
-  transition: box-shadow 0.2s, border-color 0.2s;
-}
-
+.waitlist-input { flex: 1; padding: 14px 20px; border: 2px solid var(--dark); border-radius: 100px; font-size: 15px; font-family: 'DM Sans', sans-serif; background: white; color: var(--dark); outline: none; box-shadow: 3px 3px 0 var(--dark); transition: box-shadow 0.2s, border-color 0.2s; }
 .waitlist-input:focus { box-shadow: 4px 4px 0 var(--red); border-color: var(--red); }
 .waitlist-input::placeholder { color: rgba(42,26,26,0.35); }
-
 .waitlist-note { font-size: 12px; color: var(--mid); }
+.waitlist-count { display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 32px; border: 2px solid var(--dark); box-shadow: 3px 3px 0 var(--dark); }
+.success-msg { display: none; color: var(--red); font-size: 15px; font-weight: 600; margin-top: 12px; }
 
-.waitlist-count {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--yellow); padding: 8px 18px;
-  border-radius: 100px; font-size: 13px; font-weight: 700;
-  color: var(--dark); margin-bottom: 32px;
-  border: 2px solid var(--dark); box-shadow: 3px 3px 0 var(--dark);
-}
-
-.success-msg {
-  display: none; color: var(--red);
-  font-size: 15px; font-weight: 600; margin-top: 12px;
-}
-
-footer {
-  background: var(--dark); padding: 32px 48px;
-  display: flex; justify-content: space-between; align-items: center;
-}
-
-.footer-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px; font-weight: 900;
-  font-style: italic; color: var(--yellow);
-}
-
+footer { background: var(--dark); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; font-style: italic; color: var(--yellow); }
 .footer-note { font-size: 13px; color: rgba(255,255,255,0.4); }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
 @media (max-width: 768px) {
   nav { padding: 18px 20px; }
   .nav-links { display: none; }
   .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; text-align: center; }
   .hero-bg-blob { display: none; }
-  .hero-sub { max-width: 100%; margin: 0 auto 40px; }
+  .hero-sub, .hero-apps-note { max-width: 100%; justify-content: center; }
   .hero-actions { justify-content: center; }
   .hero-right { order: -1; }
   .float-badge-1, .float-badge-2 { display: none; }
-  .section { padding: 64px 20px; }
+  .section, .shows, .honest, .why, .faq, .testimonials { padding: 64px 20px; }
+  .shows-grid { grid-template-columns: repeat(2,1fr); }
   .steps { grid-template-columns: 1fr; }
-  .why { padding: 64px 20px; }
+  .honest-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
   .waitlist { padding: 80px 20px; }
   .waitlist-form { flex-direction: column; }
   footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 20px; }
@@ -436,19 +199,31 @@ footer {
   <nav>
     <div class="nav-logo">openline.</div>
     <ul class="nav-links">
+      <li><a href="#what">What it shows</a></li>
       <li><a href="#how">How it works</a></li>
-      <li><a href="#why">Why openline</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#waitlist">Join waitlist</a></li>
     </ul>
     <button class="nav-cta" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Get early access</button>
   </nav>
 
+  <!-- HERO -->
+
   <section class="hero">
     <div class="hero-bg-blob"></div>
     <div class="hero-left">
-      <div class="hero-tag"><span class="hero-tag-dot"></span>Mutual. Consensual. Honest.</div>
+      <div class="hero-tag"><span class="hero-tag-dot"></span>Apps. Sites. All of it. Together.</div>
       <h1>See the internet, <em>together.</em></h1>
-      <p class="hero-sub">openline lets couples share their real internet activity openly. No secrets, no surveillance. Just two people choosing to be honest.</p>
+      <p class="hero-sub">openline shows couples exactly what apps and websites each other is using, in real time. Both of you opted in. Both of you can see everything.</p>
+      <div class="hero-apps-note">
+        Shows activity from:
+        <div class="hero-apps-chips">
+          <span class="chip">📱 Apps</span>
+          <span class="chip">🌐 Sites</span>
+          <span class="chip">📺 Streaming</span>
+          <span class="chip">🎮 Games</span>
+        </div>
+      </div>
       <div class="hero-actions">
         <button class="btn-primary" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join the waitlist</button>
         <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">See how it works</button>
@@ -477,7 +252,7 @@ footer {
           <div class="phone-activity-icon">📷</div>
           <div class="phone-activity-text">
             <div class="phone-activity-name">Instagram</div>
-            <div class="phone-activity-domain">instagram.com</div>
+            <div class="phone-activity-domain">instagram.com · app</div>
           </div>
           <div class="phone-activity-time" style="color:var(--red);">31m</div>
         </div>
@@ -492,7 +267,7 @@ footer {
           <div class="phone-activity-icon">▶️</div>
           <div class="phone-activity-text">
             <div class="phone-activity-name">YouTube</div>
-            <div class="phone-activity-domain">youtube.com</div>
+            <div class="phone-activity-domain">youtube.com · app</div>
           </div>
           <div class="phone-activity-time" style="color:#1A5A7A;">1h 12m</div>
         </div>
@@ -503,6 +278,37 @@ footer {
 ```
 
   </section>
+
+  <!-- WHAT IT SHOWS -->
+
+  <div class="shows" id="what">
+    <div class="section-label">What openline tracks</div>
+    <div class="section-title">Apps, sites, and everything in between.</div>
+    <div class="shows-grid">
+      <div class="shows-card">
+        <div class="shows-icon">📱</div>
+        <div class="shows-title">Social apps</div>
+        <div class="shows-desc">Instagram, TikTok, Snapchat, Twitter, and more.</div>
+      </div>
+      <div class="shows-card">
+        <div class="shows-icon">🌐</div>
+        <div class="shows-title">Websites</div>
+        <div class="shows-desc">Every domain visited, how long, and how often.</div>
+      </div>
+      <div class="shows-card">
+        <div class="shows-icon">📺</div>
+        <div class="shows-title">Streaming</div>
+        <div class="shows-desc">Netflix, YouTube, Hulu, Twitch, and streaming apps.</div>
+      </div>
+      <div class="shows-card">
+        <div class="shows-icon">🎮</div>
+        <div class="shows-title">Gaming & other</div>
+        <div class="shows-desc">Discord, games, and any app using the internet.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
 
   <section class="section" id="how">
     <div class="section-label">How it works</div>
@@ -518,25 +324,64 @@ footer {
         <div class="step-num">02</div>
         <div class="step-icon">🔗</div>
         <div class="step-title">Connect together</div>
-        <div class="step-desc">Pair your accounts with a shared code. Both phones enable a privacy-safe profile that logs internet activity locally.</div>
+        <div class="step-desc">Pair your accounts with a shared code. Both phones enable a privacy-safe profile that logs app and site activity.</div>
       </div>
       <div class="step step-3">
         <div class="step-num">03</div>
         <div class="step-icon">👀</div>
         <div class="step-title">See everything</div>
-        <div class="step-desc">View each other's apps and sites in real time. You see their data exactly the way they see yours.</div>
+        <div class="step-desc">View each other's apps and sites in real time. You see their data exactly the way they see yours. Always symmetric.</div>
       </div>
     </div>
   </section>
 
-  <div class="why" id="why">
+  <!-- NOT SURVEILLANCE -->
+
+  <div class="honest">
+    <div class="section-label">Let's be direct</div>
+    <div class="section-title">This isn't spyware. Here's the difference.</div>
+    <div class="honest-grid">
+      <div class="honest-row">
+        <div class="honest-icon">✅</div>
+        <div>
+          <div class="honest-title">Both people download the same app</div>
+          <div class="honest-desc">There's no hidden version. You and your partner install the exact same app and see the exact same thing.</div>
+        </div>
+      </div>
+      <div class="honest-row">
+        <div class="honest-icon">✅</div>
+        <div>
+          <div class="honest-title">Sharing requires mutual consent</div>
+          <div class="honest-desc">Nothing is shared until both partners explicitly opt in. One person can't activate it for the other.</div>
+        </div>
+      </div>
+      <div class="honest-row">
+        <div class="honest-icon">✅</div>
+        <div>
+          <div class="honest-title">Either person can pause anytime</div>
+          <div class="honest-desc">No questions asked. If you want to stop sharing, you can. Your partner is notified, not left in the dark.</div>
+        </div>
+      </div>
+      <div class="honest-row">
+        <div class="honest-icon">✅</div>
+        <div>
+          <div class="honest-title">You see their data, they see yours</div>
+          <div class="honest-desc">It's always symmetric. There's no "watcher" and "watched." Both people have identical visibility.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY -->
+
+  <div class="why">
     <div class="section-label">Why openline</div>
     <div class="section-title">Built for two. Not one.</div>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-card-icon">⚖️</div>
         <div class="why-card-title">Fully symmetric</div>
-        <div class="why-card-desc">You see their data the exact same way they see yours. No one-sided monitoring. No power imbalance.</div>
+        <div class="why-card-desc">You see their apps and sites the exact same way they see yours. No one-sided monitoring, no power imbalance.</div>
       </div>
       <div class="why-card">
         <div class="why-card-icon">🔒</div>
@@ -546,15 +391,92 @@ footer {
       <div class="why-card">
         <div class="why-card-icon">🌱</div>
         <div class="why-card-title">Build better habits</div>
-        <div class="why-card-desc">Awareness creates change. Couples use openline to reduce screen time, be more present, and stay accountable together.</div>
+        <div class="why-card-desc">Awareness creates change. Couples use openline to reduce doomscrolling, be more present, and stay accountable.</div>
       </div>
       <div class="why-card">
         <div class="why-card-icon">💬</div>
         <div class="why-card-title">Rebuild trust</div>
-        <div class="why-card-desc">Choosing to be open is the trust-building act. openline gives couples a way to show, not just say, they have nothing to hide.</div>
+        <div class="why-card-desc">Choosing to be open is the trust-building act. Show, don't just say, you have nothing to hide.</div>
       </div>
     </div>
   </div>
+
+  <!-- TESTIMONIALS -->
+
+  <section class="testimonials">
+    <div class="section-label">Early feedback</div>
+    <div class="section-title">What beta users are saying.</div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"We both agreed to try it for a month. It completely changed how we talk about screen time. Way less passive aggression."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:var(--pink);">A</div>
+          <div>
+            <div class="testimonial-name">Aisha & Marcus</div>
+            <div class="testimonial-detail">Together 3 years · Los Angeles</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"My partner had anxiety about what I was doing online. Openline basically made that go away. We both feel better."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:var(--sky);">J</div>
+          <div>
+            <div class="testimonial-name">Jake & Riley</div>
+            <div class="testimonial-detail">Together 1 year · Chicago</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★☆</div>
+        <div class="testimonial-quote">"Honestly I was skeptical but it works exactly as described. We both see the same thing. No weirdness, no secrets."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:var(--yellow);">S</div>
+          <div>
+            <div class="testimonial-name">Sofia & Dev</div>
+            <div class="testimonial-detail">Together 2 years · New York</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+
+  <div class="faq" id="faq">
+    <div class="section-label">Questions</div>
+    <div class="section-title">Things people ask.</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Does it show everything, including private browsing? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a">Private/incognito browsing is not tracked by default. openline only logs standard internet activity. We built it this way intentionally so both partners feel genuinely comfortable opting in.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can my partner see it without me knowing? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a">No. Sharing requires both people to download the app, create accounts, and actively pair together. Your partner cannot activate this without your explicit participation.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What exactly does it show, apps or just websites? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a">Both. openline shows which apps are using the internet (Instagram, TikTok, YouTube, games, etc.) and which websites are being visited, along with how long and how often. It's a full picture of internet activity, not just browser history.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if I want to stop sharing? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a">You can pause sharing at any time from the app. Your partner will be notified that you've paused, but won't see why. There's no punishment, no lock-in.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is this legal? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a">Yes. Because both parties explicitly consent and both can see the same data, openline operates entirely within legal boundaries. It's fundamentally different from covert monitoring apps, which are illegal in most jurisdictions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">When does it launch? <span class="faq-arrow">↓</span></div>
+        <div class="faq-a">We're in early development and building our waitlist now. Join below and you'll be among the first to get access when we launch.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAITLIST -->
 
   <section class="waitlist" id="waitlist">
     <div class="waitlist-count">🎉 142 couples already waiting</div>
@@ -586,6 +508,11 @@ footer {
       msg.style.display = 'block';
     }
 
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      item.classList.toggle('open');
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -595,7 +522,7 @@ footer {
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.step, .why-card').forEach(el => {
+    document.querySelectorAll('.step, .why-card, .testimonial, .shows-card, .honest-row').forEach(el => {
       el.style.opacity = 0;
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
