@@ -2,580 +2,184 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>breakup. — join the waitlist</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>breakup. &mdash; join the waitlist</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F9F7FF;--red:#E85D75;--blue:#5B9BD5;--dark:#1C1C1E;
+  --green:#4CAF82;--yellow:#FFD166;--purple:#C4A8FF;
+  --card:#FFFFFF;--border:#EBEBF0;--sub:#8A8A9A;--muted:#BABAC8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;overflow-x:hidden}
 
-```
-:root {
-  --bg: #F9F7FF;
-  --red: #E85D75;
-  --blue: #5B9BD5;
-  --dark: #1C1C1E;
-  --green: #4CAF82;
-  --yellow: #FFD166;
-  --purple: #C4A8FF;
-  --card: #FFFFFF;
-  --border: #EBEBF0;
-  --text-sub: #8A8A9A;
-}
+/* blobs */
+.blobs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.14;animation:bf 9s ease-in-out infinite}
+.b1{width:420px;height:420px;background:var(–red);top:-130px;left:-130px;animation-delay:0s}
+.b2{width:340px;height:340px;background:var(–blue);bottom:30px;right:-90px;animation-delay:3s}
+.b3{width:260px;height:260px;background:var(–yellow);top:42%;left:46%;animation-delay:1.6s}
+@keyframes bf{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-22px) scale(1.03)}}
 
-html { scroll-behavior: smooth; }
+/* layout */
+.wrap{position:relative;z-index:1;max-width:500px;margin:0 auto;padding:44px 22px 88px;display:flex;flex-direction:column;align-items:center;gap:30px}
 
-body {
-  font-family: 'Nunito', sans-serif;
-  background: var(--bg);
-  color: var(--dark);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+/* logo */
+.logo{font-style:italic;font-weight:900;font-size:32px;color:var(–red);letter-spacing:-.5px}
 
-/* ── floating blobs ── */
-.blobs {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.18;
-  animation: float 8s ease-in-out infinite;
-}
-.blob-1 { width: 420px; height: 420px; background: var(--red);   top: -100px; left: -120px; animation-delay: 0s; }
-.blob-2 { width: 340px; height: 340px; background: var(--blue);  bottom: 60px; right: -80px; animation-delay: 3s; }
-.blob-3 { width: 260px; height: 260px; background: var(--yellow); top: 40%; left: 50%; animation-delay: 1.5s; }
-@keyframes float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50%       { transform: translateY(-24px) scale(1.04); }
-}
+/* chars */
+.chars{display:flex;gap:18px;align-items:flex-start;justify-content:center}
+.cc{background:var(–card);border-radius:24px;padding:20px 18px 16px;box-shadow:0 4px 24px rgba(0,0,0,.07);border:1.5px solid var(–border);display:flex;flex-direction:column;align-items:center;gap:7px;min-width:136px}
+.cc.pk{background:#FFF4F6}
+.cc.bl{background:#F0F5FF}
+.cname{font-weight:900;font-size:15px}
+.ctime{font-size:26px;font-weight:900}
+.onl{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:800;color:var(–green)}
 
-/* ── layout ── */
-.wrap {
-  position: relative;
-  z-index: 1;
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-}
+/* headline */
+.hl{text-align:center}
+.hl h1{font-size:clamp(26px,7vw,36px);font-weight:900;line-height:1.2}
+.hl h1 em{color:var(–red);font-style:italic}
+.hl p{margin-top:11px;font-size:14px;font-weight:600;color:var(–sub);line-height:1.65}
 
-/* ── logo ── */
-.logo {
-  font-style: italic;
-  font-weight: 800;
-  font-size: 32px;
-  color: var(--red);
-  letter-spacing: -0.5px;
-}
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.chip{display:flex;align-items:center;gap:5px;padding:6px 13px;border-radius:999px;font-size:12px;font-weight:700;border:1.5px solid}
+.cr{background:#FFF0F3;border-color:#FFD0D9;color:var(–red)}
+.cb{background:#EFF4FF;border-color:#C8D9FF;color:var(–blue)}
+.cg{background:#F0FFF7;border-color:#B8EDCF;color:var(–green)}
+.cy{background:#FFFBEF;border-color:#FFE999;color:#9A7300}
 
-/* ── characters ── */
-.characters {
-  display: flex;
-  gap: 20px;
-  align-items: flex-end;
-  justify-content: center;
-}
-.char-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-.char-card {
-  background: var(--card);
-  border-radius: 24px;
-  padding: 20px 18px 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-  border: 1.5px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  transition: transform 0.3s ease;
-}
-.char-card:hover { transform: translateY(-6px); }
-.char-card.pink-tint  { background: #FFF4F6; }
-.char-card.blue-tint  { background: #F0F5FF; }
-.char-name {
-  font-weight: 800;
-  font-size: 15px;
-  color: var(--dark);
-}
-.char-time {
-  font-size: 22px;
-  font-weight: 900;
-  color: var(--dark);
-}
-.char-sub {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-sub);
-}
-.online-heart {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--green);
-}
-
-/* ── headline ── */
-.headline {
-  text-align: center;
-}
-.headline h1 {
-  font-size: clamp(26px, 6vw, 36px);
-  font-weight: 900;
-  line-height: 1.2;
-  color: var(--dark);
-}
-.headline h1 em {
-  color: var(--red);
-  font-style: italic;
-}
-.headline p {
-  margin-top: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-sub);
-  line-height: 1.6;
-}
-
-/* ── pill chips ── */
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
-.chip {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  border: 1.5px solid;
-}
-.chip.r { background: #FFF0F3; border-color: #FFD0D9; color: var(--red); }
-.chip.b { background: #EFF4FF; border-color: #C8D9FF; color: var(--blue); }
-.chip.g { background: #F0FFF7; border-color: #B8EDCF; color: var(--green); }
-.chip.y { background: #FFFBEF; border-color: #FFE999; color: #B8860B; }
-
-/* ── waitlist card ── */
-.waitlist-card {
-  background: var(--card);
-  border-radius: 28px;
-  padding: 32px 28px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-  border: 1.5px solid var(--border);
-  width: 100%;
-}
-.waitlist-card h2 {
-  font-size: 20px;
-  font-weight: 900;
-  text-align: center;
-  margin-bottom: 6px;
-}
-.waitlist-card .sub {
-  text-align: center;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-sub);
-  margin-bottom: 24px;
-}
+/* waitlist card */
+.wcard{background:var(–card);border-radius:30px;padding:30px 26px;width:100%;box-shadow:0 8px 44px rgba(0,0,0,.08);border:1.5px solid var(–border)}
+.wcard h2{font-size:21px;font-weight:900;text-align:center;margin-bottom:5px}
+.wsub{font-size:13px;font-weight:600;color:var(–sub);text-align:center;margin-bottom:22px}
 
 /* counter */
-.counter-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 24px;
-}
-.avatars-stack {
-  display: flex;
-}
-.av {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 2px solid white;
-  margin-left: -8px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.av:first-child { margin-left: 0; }
-.av.a1 { background: #FFD6DD; }
-.av.a2 { background: #D6E6FF; }
-.av.a3 { background: #D6F5E6; }
-.av.a4 { background: #FFF3CC; }
-.counter-text {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-sub);
-}
-.counter-text strong { color: var(--dark); }
+.ctr{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:22px}
+.avs{display:flex}
+.av{width:30px;height:30px;border-radius:50%;border:2.5px solid white;margin-left:-8px;font-size:14px;display:flex;align-items:center;justify-content:center}
+.av:first-child{margin-left:0}
+.av1{background:#FFD6DD}.av2{background:#D6E6FF}.av3{background:#D6F5E6}.av4{background:#FFF3CC}
+.ctxt{font-size:13px;font-weight:700;color:var(–sub)}
+.ctxt strong{color:var(–dark)}
 
 /* form */
-.field-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.input-wrap {
-  position: relative;
-}
-.input-wrap svg {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.4;
-}
-input[type="text"],
-input[type="email"] {
-  width: 100%;
-  padding: 14px 14px 14px 42px;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 14px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--dark);
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-input[type="text"]::placeholder,
-input[type="email"]::placeholder { color: #BABAC8; font-weight: 600; }
-input[type="text"]:focus,
-input[type="email"]:focus {
-  border-color: var(--red);
-  box-shadow: 0 0 0 3px rgba(232,93,117,0.12);
-}
+.flds{display:flex;flex-direction:column;gap:11px}
+.iw{position:relative}
+.iw svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.35;pointer-events:none}
+input[type=“text”],input[type=“email”]{width:100%;padding:14px 14px 14px 42px;background:var(–bg);border:1.5px solid var(–border);border-radius:13px;font-family:‘Nunito’,sans-serif;font-size:14px;font-weight:700;color:var(–dark);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+input::placeholder{color:#C0C0CE;font-weight:600}
+input:focus{border-color:var(–red);box-shadow:0 0 0 3px rgba(232,93,117,.11)}
 
-/* couple toggle */
-.couple-label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-sub);
-  margin-bottom: -4px;
-}
-.toggle-row {
-  display: flex;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 14px;
-  padding: 4px;
-  gap: 4px;
-}
-.toggle-btn {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  background: transparent;
-  color: var(--text-sub);
-  transition: background 0.2s, color 0.2s;
-}
-.toggle-btn.active {
-  background: var(--card);
-  color: var(--dark);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
+.tlbl{font-size:12px;font-weight:800;color:var(–sub);margin-bottom:7px}
+.trow{display:flex;background:var(–bg);border:1.5px solid var(–border);border-radius:13px;padding:3px;gap:3px}
+.tbtn{flex:1;padding:10px;border:none;border-radius:10px;font-family:‘Nunito’,sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:transparent;color:var(–sub);transition:background .2s,color .2s}
+.tbtn.on{background:var(–card);color:var(–dark);box-shadow:0 2px 8px rgba(0,0,0,.08)}
 
-/* submit button */
-.btn-submit {
-  width: 100%;
-  padding: 16px;
-  background: var(--red);
-  color: white;
-  border: none;
-  border-radius: 16px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
-  box-shadow: 0 4px 16px rgba(232,93,117,0.35);
-  margin-top: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.btn-submit:hover {
-  background: #D44E66;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(232,93,117,0.4);
-}
-.btn-submit:active { transform: translateY(0); }
+.sbtn{display:block;width:100%;padding:16px;background:var(–red);color:#fff;border:none;border-radius:15px;font-family:‘Nunito’,sans-serif;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(232,93,117,.38);transition:transform .15s,box-shadow .15s;-webkit-appearance:none;appearance:none;margin-top:2px}
+.sbtn:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(232,93,117,.42)}
+.sbtn:active{transform:translateY(0)}
+.pnote{text-align:center;font-size:11px;font-weight:600;color:var(–muted)}
 
-.privacy-note {
-  text-align: center;
-  font-size: 11px;
-  font-weight: 600;
-  color: #BABAC8;
-  margin-top: 12px;
-}
+/* success */
+.sst{display:none;flex-direction:column;align-items:center;gap:11px;text-align:center;padding:10px 0}
+.sst.show{display:flex}
+.ff.hide{display:none}
+.sico{width:62px;height:62px;background:#F0FFF7;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #B8EDCF}
+.sst h3{font-size:21px;font-weight:900}
+.sst p{font-size:13px;font-weight:600;color:var(–sub)}
+.pbdg{background:var(–bg);border:1.5px solid var(–border);border-radius:999px;padding:8px 20px;font-size:13px;font-weight:800}
+.pbdg span{color:var(–red)}
 
-/* ── success state ── */
-.success-state {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  text-align: center;
-  padding: 8px 0;
-}
-.success-state.show { display: flex; }
-.form-content.hide { display: none; }
-.success-icon {
-  width: 64px;
-  height: 64px;
-  background: #F0FFF7;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #B8EDCF;
-}
-.success-state h3 {
-  font-size: 20px;
-  font-weight: 900;
-}
-.success-state p {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-sub);
-}
-.position-badge {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  padding: 8px 20px;
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--dark);
-}
-.position-badge span { color: var(--red); }
+/* features */
+.fsec{width:100%}
+.ftit{font-size:21px;font-weight:900;text-align:center;margin-bottom:5px}
+.fsubt{font-size:13px;font-weight:600;color:var(–sub);text-align:center;margin-bottom:20px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.fcard{background:var(–card);border:1.5px solid var(–border);border-radius:20px;padding:17px 14px;display:flex;flex-direction:column;gap:8px;transition:transform .2s}
+.fcard:hover{transform:translateY(-4px)}
+.fcard.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:15px}
+.fib{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fir{background:#FFF0F3}.fib2{background:#EFF4FF}.fig{background:#F0FFF7}.fiy{background:#FFFBEF}.fip{background:#F5F0FF}
+.fbdy{flex:1;display:flex;flex-direction:column;gap:5px}
+.fcard strong{font-size:13px;font-weight:900;color:var(–dark);line-height:1.3}
+.fcard p{font-size:12px;font-weight:600;color:var(–sub);line-height:1.55}
+.soon{display:inline-flex;align-items:center;background:var(–bg);border:1.5px solid var(–border);border-radius:999px;padding:3px 10px;font-size:10px;font-weight:800;color:var(–sub);width:fit-content;margin-top:1px}
 
-/* ── features section ── */
-.features-section {
-  width: 100%;
-}
-.features-title {
-  font-size: 20px;
-  font-weight: 900;
-  text-align: center;
-  margin-bottom: 4px;
-}
-.features-sub {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-sub);
-  text-align: center;
-  margin-bottom: 20px;
-}
-.feat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-.feat-card {
-  background: var(--card);
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  padding: 18px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  transition: transform 0.2s;
-}
-.feat-card:hover { transform: translateY(-3px); }
-.feat-card.wide {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  align-items: center;
-  gap: 14px;
-}
-.feat-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.fi-r  { background: #FFF0F3; }
-.fi-b  { background: #EFF4FF; }
-.fi-g  { background: #F0FFF7; }
-.fi-y  { background: #FFFBEF; }
-.fi-p  { background: #F5F0FF; }
-.fi-pk { background: #FFF4F9; }
-.feat-card-label {
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-sub);
-}
-.feat-card strong {
-  font-size: 13px;
-  font-weight: 900;
-  color: var(--dark);
-  line-height: 1.3;
-}
-.feat-card p {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--text-sub);
-  line-height: 1.5;
-}
-.feat-card.wide .feat-card-body { flex: 1; }
-.feat-card.wide .feat-card-body strong { font-size: 14px; }
-.feat-card.wide .feat-card-body p { font-size: 12px; }
-.coming-soon-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 10px;
-  font-weight: 800;
-  color: var(--text-sub);
-  margin-top: 2px;
-  width: fit-content;
-}
+.foot{font-size:12px;font-weight:600;color:var(–muted);text-align:center;line-height:1.8}
 
-/* ── footer ── */
-.footer {
-  font-size: 12px;
-  font-weight: 600;
-  color: #BABAC8;
-  text-align: center;
-}
+/* confetti */
+.cp{position:fixed;pointer-events:none;z-index:999;border-radius:2px}
+@keyframes cff{0%{opacity:1;transform:translateY(0) rotate(0deg)}100%{opacity:0;transform:translateY(200px) rotate(400deg)}}
+</style>
 
-/* ── confetti ── */
-.confetti-piece {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  border-radius: 2px;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 999;
-}
-```
-
-  </style>
 </head>
 <body>
 
 <div class="blobs">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
 </div>
 
 <div class="wrap">
-
-  <!-- logo -->
 
   <div class="logo">breakup.</div>
 
   <!-- characters -->
 
-  <div class="characters">
-    <div class="char-wrap">
-      <div class="char-card pink-tint">
-        <!-- You character (pink) -->
-        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-          <circle cx="36" cy="36" r="34" fill="#FFD6DD" stroke="#E85D75" stroke-width="1.5"/>
-          <!-- hair -->
-          <ellipse cx="36" cy="18" rx="18" ry="10" fill="#E85D75"/>
-          <ellipse cx="20" cy="26" rx="7" ry="12" fill="#E85D75"/>
-          <ellipse cx="52" cy="26" rx="7" ry="12" fill="#E85D75"/>
-          <!-- face -->
-          <circle cx="29" cy="34" r="3.5" fill="white"/>
-          <circle cx="43" cy="34" r="3.5" fill="white"/>
-          <circle cx="30" cy="34.5" r="1.8" fill="#1C1C1E"/>
-          <circle cx="44" cy="34.5" r="1.8" fill="#1C1C1E"/>
-          <circle cx="30.8" cy="33.8" r="0.8" fill="white"/>
-          <circle cx="44.8" cy="33.8" r="0.8" fill="white"/>
-          <!-- blush -->
-          <ellipse cx="25" cy="40" rx="5" ry="3" fill="#E85D75" opacity="0.3"/>
-          <ellipse cx="47" cy="40" rx="5" ry="3" fill="#E85D75" opacity="0.3"/>
-          <!-- smile -->
-          <path d="M28 44 Q36 51 44 44" stroke="#E85D75" stroke-width="2" stroke-linecap="round" fill="none"/>
-        </svg>
-        <div class="char-name">You</div>
-        <div class="char-time">3h 12m</div>
-        <div class="online-heart">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M6 10.5S1 7 1 3.5A2.5 2.5 0 016 2.2 2.5 2.5 0 0111 3.5C11 7 6 10.5 6 10.5z" fill="#4CAF82" stroke="#2E8B57" stroke-width="1"/>
-          </svg>
-          online
-        </div>
+  <div class="chars">
+    <div class="cc pk">
+      <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
+        <circle cx="38" cy="38" r="36" fill="#FFD6DD" stroke="#E85D75" stroke-width="1.5"/>
+        <ellipse cx="38" cy="19" rx="19" ry="11" fill="#E85D75"/>
+        <ellipse cx="21" cy="28" rx="7.5" ry="13" fill="#E85D75"/>
+        <ellipse cx="55" cy="28" rx="7.5" ry="13" fill="#E85D75"/>
+        <circle cx="30" cy="36" r="3.8" fill="white"/>
+        <circle cx="46" cy="36" r="3.8" fill="white"/>
+        <circle cx="31" cy="36.8" r="2" fill="#1C1C1E"/>
+        <circle cx="47" cy="36.8" r="2" fill="#1C1C1E"/>
+        <circle cx="31.9" cy="36" r="0.9" fill="white"/>
+        <circle cx="47.9" cy="36" r="0.9" fill="white"/>
+        <ellipse cx="26" cy="43" rx="5.5" ry="3" fill="#E85D75" opacity="0.28"/>
+        <ellipse cx="50" cy="43" rx="5.5" ry="3" fill="#E85D75" opacity="0.28"/>
+        <path d="M29 47 Q38 55 47 47" stroke="#E85D75" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="cname">You</div>
+      <div class="ctime">3h 12m</div>
+      <div class="onl">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 11S1 7.5 1 4A2.6 2.6 0 016 2.1 2.6 2.6 0 0111 4C11 7.5 6 11 6 11z" fill="#4CAF82" stroke="#2E8B57" stroke-width="1"/></svg>
+        online
       </div>
     </div>
 
 ```
-<div class="char-wrap" style="margin-top: 20px;">
-  <div class="char-card blue-tint">
-    <!-- Dylan character (blue) -->
-    <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-      <circle cx="36" cy="36" r="34" fill="#D6E6FF" stroke="#5B9BD5" stroke-width="1.5"/>
-      <!-- hair messy -->
-      <ellipse cx="36" cy="17" rx="16" ry="9" fill="#3A3A4A"/>
-      <path d="M20 22 Q16 14 22 12 Q28 10 30 16" fill="#3A3A4A"/>
-      <path d="M52 22 Q56 14 50 12 Q44 10 42 16" fill="#3A3A4A"/>
-      <path d="M32 12 Q36 6 42 10" stroke="#3A3A4A" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <!-- glasses -->
-      <rect x="23" y="30" width="10" height="7" rx="3" stroke="#3A3A4A" stroke-width="1.5" fill="rgba(91,155,213,0.2)"/>
-      <rect x="38" y="30" width="10" height="7" rx="3" stroke="#3A3A4A" stroke-width="1.5" fill="rgba(91,155,213,0.2)"/>
-      <path d="M33 33 L38 33" stroke="#3A3A4A" stroke-width="1.5"/>
-      <!-- wink eye -->
-      <circle cx="28" cy="33.5" r="1.5" fill="#1C1C1E"/>
-      <circle cx="28.7" cy="32.8" r="0.6" fill="white"/>
-      <!-- wink -->
-      <path d="M41 31.5 Q43 33 45 31.5" stroke="#1C1C1E" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-      <!-- blush -->
-      <ellipse cx="25" cy="40" rx="4.5" ry="2.5" fill="#5B9BD5" opacity="0.25"/>
-      <ellipse cx="47" cy="40" rx="4.5" ry="2.5" fill="#5B9BD5" opacity="0.25"/>
-      <!-- smile -->
-      <path d="M29 44 Q36 50 43 44" stroke="#5B9BD5" stroke-width="2" stroke-linecap="round" fill="none"/>
-    </svg>
-    <div class="char-name">Dylan</div>
-    <div class="char-time">2h 48m</div>
-    <div class="online-heart">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-        <path d="M6 10.5S1 7 1 3.5A2.5 2.5 0 016 2.2 2.5 2.5 0 0111 3.5C11 7 6 10.5 6 10.5z" fill="#4CAF82" stroke="#2E8B57" stroke-width="1"/>
-      </svg>
-      online
-    </div>
+<div class="cc bl" style="margin-top:22px">
+  <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
+    <circle cx="38" cy="38" r="36" fill="#D6E6FF" stroke="#5B9BD5" stroke-width="1.5"/>
+    <ellipse cx="38" cy="18" rx="17" ry="10" fill="#3A3A4A"/>
+    <path d="M21 23 Q17 14 23 12 Q30 10 32 17" fill="#3A3A4A"/>
+    <path d="M55 23 Q59 14 53 12 Q46 10 44 17" fill="#3A3A4A"/>
+    <path d="M33 12 Q38 5 44 10" stroke="#3A3A4A" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <rect x="24" y="31" width="11" height="8" rx="3.5" stroke="#3A3A4A" stroke-width="1.6" fill="rgba(91,155,213,0.2)"/>
+    <rect x="40" y="31" width="11" height="8" rx="3.5" stroke="#3A3A4A" stroke-width="1.6" fill="rgba(91,155,213,0.2)"/>
+    <path d="M35 35 L40 35" stroke="#3A3A4A" stroke-width="1.6"/>
+    <circle cx="29.5" cy="35" r="1.7" fill="#1C1C1E"/>
+    <circle cx="30.3" cy="34.2" r="0.7" fill="white"/>
+    <path d="M43 32.5 Q45.5 34.5 48 32.5" stroke="#1C1C1E" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    <ellipse cx="26" cy="43" rx="5" ry="2.8" fill="#5B9BD5" opacity="0.22"/>
+    <ellipse cx="50" cy="43" rx="5" ry="2.8" fill="#5B9BD5" opacity="0.22"/>
+    <path d="M30 47 Q38 54 46 47" stroke="#5B9BD5" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  </svg>
+  <div class="cname">Dylan</div>
+  <div class="ctime">2h 48m</div>
+  <div class="onl">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 11S1 7.5 1 4A2.6 2.6 0 016 2.1 2.6 2.6 0 0111 4C11 7.5 6 11 6 11z" fill="#4CAF82" stroke="#2E8B57" stroke-width="1"/></svg>
+    online
   </div>
 </div>
 ```
@@ -584,225 +188,193 @@ input[type="email"]:focus {
 
   <!-- headline -->
 
-  <div class="headline">
-    <h1>the app that keeps<br/><em>you together.</em></h1>
-    <p>See what your partner's really doing online. Mutual, consensual, honest. No secrets, no drama.</p>
+  <div class="hl">
+    <h1>the app that keeps<br><em>you together.</em></h1>
+    <p>See what your partner is really doing online.<br>Mutual, consensual, honest. No secrets, no drama.</p>
   </div>
 
   <!-- chips -->
 
   <div class="chips">
-    <div class="chip r">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="3" stroke="#E85D75" stroke-width="1.5"/><circle cx="6" cy="6" r="2" fill="#E85D75"/></svg>
-      iOS & Android
-    </div>
-    <div class="chip b">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L7.5 4.5H11L8.5 6.8L9.5 10L6 7.8L2.5 10L3.5 6.8L1 4.5H4.5z" stroke="#5B9BD5" stroke-width="1.2" fill="none"/></svg>
-      Free beta
-    </div>
-    <div class="chip g">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4CAF82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      100% consensual
-    </div>
-    <div class="chip y">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v5l3 2" stroke="#B8860B" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="5" stroke="#B8860B" stroke-width="1.2"/></svg>
-      Summer 2026
-    </div>
+    <div class="chip cr">iOS &amp; Android</div>
+    <div class="chip cb">Free beta</div>
+    <div class="chip cg">100% consensual</div>
+    <div class="chip cy">Summer 2026</div>
   </div>
 
   <!-- waitlist card -->
 
-  <div class="waitlist-card">
-    <h2>join the waitlist 💌</h2>
-    <p class="sub">be first when we launch. spots are limited.</p>
+  <div class="wcard">
+    <h2>join the waitlist &#128140;</h2>
+    <p class="wsub">be first when we launch. spots are limited.</p>
 
 ```
-<!-- counter -->
-<div class="counter-row">
-  <div class="avatars-stack">
-    <div class="av a1">🫶</div>
-    <div class="av a2">💙</div>
-    <div class="av a3">💚</div>
-    <div class="av a4">💛</div>
+<div class="ctr">
+  <div class="avs">
+    <div class="av av1">&#129334;</div>
+    <div class="av av2">&#128153;</div>
+    <div class="av av3">&#128154;</div>
+    <div class="av av4">&#128155;</div>
   </div>
-  <div class="counter-text"><strong>142 couples</strong> already waiting</div>
+  <div class="ctxt"><strong>142 couples</strong> already waiting</div>
 </div>
 
-<!-- form -->
-<div class="form-content" id="formContent">
-  <div class="field-group">
-    <div class="input-wrap">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4a1 1 0 011-1h10a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" stroke="#1C1C1E" stroke-width="1.5"/><path d="M2 4l6 5 6-5" stroke="#1C1C1E" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <input type="email" id="emailInput" placeholder="your email address" autocomplete="email"/>
+<div class="ff" id="ff">
+  <div class="flds">
+    <div class="iw">
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M2 4.5a1 1 0 011-1h11a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1v-8z" stroke="#1C1C1E" stroke-width="1.5"/><path d="M2 4.5l6.5 5.5 6.5-5.5" stroke="#1C1C1E" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="email" id="em" placeholder="your email address" autocomplete="email"/>
     </div>
-
-    <div class="input-wrap">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="#1C1C1E" stroke-width="1.5"/><path d="M2 14c0-3 2.5-5 6-5s6 2 6 5" stroke="#1C1C1E" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <input type="text" id="nameInput" placeholder="your first name" autocomplete="given-name"/>
+    <div class="iw">
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="8.5" cy="5.5" r="3" stroke="#1C1C1E" stroke-width="1.5"/><path d="M2 15c0-3.3 2.9-5.5 6.5-5.5S15 11.7 15 15" stroke="#1C1C1E" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="text" id="nm" placeholder="your first name" autocomplete="given-name"/>
     </div>
-
     <div>
-      <div class="couple-label">signing up as</div>
-      <div class="toggle-row" style="margin-top: 8px;">
-        <button class="toggle-btn active" onclick="setToggle(this, 'solo')">just me 🙋</button>
-        <button class="toggle-btn" onclick="setToggle(this, 'couple')">as a couple 💑</button>
+      <div class="tlbl">signing up as</div>
+      <div class="trow">
+        <button class="tbtn on" onclick="setT(this)">just me &#127991;</button>
+        <button class="tbtn" onclick="setT(this)">as a couple &#128145;</button>
       </div>
     </div>
-
-    <button class="btn-submit" onclick="handleSubmit()">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 15.5S2 11 2 6A4 4 0 019 3.5 4 4 0 0116 6C16 11 9 15.5 9 15.5z" fill="white" opacity="0.9"/></svg>
-      get early access
-    </button>
-
-    <p class="privacy-note">🔒 no spam, ever. unsubscribe anytime. your data stays private.</p>
+    <button class="sbtn" onclick="doSub()">get early access &#129293;</button>
+    <p class="pnote">&#128274; no spam, ever. unsubscribe anytime.</p>
   </div>
 </div>
 
-<!-- success -->
-<div class="success-state" id="successState">
-  <div class="success-icon">
+<div class="sst" id="ss">
+  <div class="sico">
     <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-      <path d="M15 26S4 18.5 4 10A5.5 5.5 0 0115 6.5 5.5 5.5 0 0126 10C26 18.5 15 26 15 26z" fill="#4CAF82" stroke="#2E8B57" stroke-width="1.5"/>
+      <path d="M15 27S3 19 3 10A6 6 0 0115 6.5 6 6 0 0127 10C27 19 15 27 15 27z" fill="#4CAF82" stroke="#2E8B57" stroke-width="1.5"/>
     </svg>
   </div>
-  <h3>you're in! 🎉</h3>
-  <p>we'll email you the moment breakup. is ready.</p>
-  <div class="position-badge">you're <span>#143</span> on the waitlist</div>
-  <p style="font-size: 12px; color: var(--text-sub);">share with your partner so you both get early access together</p>
+  <h3>you&#39;re in! &#127881;</h3>
+  <p>we&#39;ll email you the moment breakup. is ready.</p>
+  <div class="pbdg">you&#39;re <span>#143</span> on the waitlist</div>
+  <p style="font-size:12px">share with your partner so you both get early access &#129331;</p>
 </div>
 ```
 
   </div>
 
-  <!-- features section -->
+  <!-- features -->
 
-  <div class="features-section">
-    <h2 class="features-title">everything you get ✨</h2>
-    <p class="features-sub">built for couples who want nothing to hide</p>
-    <div class="feat-grid">
+  <div class="fsec">
+    <h2 class="ftit">everything you get &#10024;</h2>
+    <p class="fsubt">built for couples who want nothing to hide</p>
+    <div class="fgrid">
 
 ```
-  <!-- wide: live activity -->
-  <div class="feat-card wide">
-    <div class="feat-icon-box fi-r">
+  <div class="fcard wide">
+    <div class="fib fir">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="9" stroke="#E85D75" stroke-width="1.8"/>
-        <path d="M8 12h4l2-4 2 6 1-2h1" stroke="#E85D75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 12h4l2-3.5 2 5.5 1-2h1" stroke="#E85D75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <div class="feat-card-body">
+    <div class="fbdy">
       <strong>live activity feed</strong>
-      <p>see what your partner is doing on their phone right now, updating every few minutes. real data, no guessing.</p>
+      <p>see exactly what your partner is doing on their phone right now, updating every few minutes. real data, no guessing.</p>
     </div>
   </div>
 
-  <!-- full browsing history -->
-  <div class="feat-card">
-    <div class="feat-icon-box fi-b">
+  <div class="fcard">
+    <div class="fib fib2">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <circle cx="11" cy="11" r="7" stroke="#5B9BD5" stroke-width="1.8"/>
-        <path d="M17 17l3 3" stroke="#5B9BD5" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M8 11h6M11 8v6" stroke="#5B9BD5" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M16.5 16.5l4 4" stroke="#5B9BD5" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M8 11h6M11 8v6" stroke="#5B9BD5" stroke-width="1.6" stroke-linecap="round"/>
       </svg>
     </div>
     <strong>full browsing history</strong>
     <p>every website, every timestamp. the complete picture.</p>
   </div>
 
-  <!-- streak tracking -->
-  <div class="feat-card">
-    <div class="feat-icon-box fi-y">
+  <div class="fcard">
+    <div class="fib fiy">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M13 2C13 2 7 8 7 13a5 5 0 0010 0c0-2-1.5-4-1.5-4S14 11 12 11c-1 0-2 .8-2 2s1 2 2 2" stroke="#B8860B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M13 2C13 2 7 8.5 7 13.5a6 6 0 0012 0c0-2.5-1.8-4.5-1.8-4.5S14.5 11 12.5 11c-1.2 0-2.2.9-2.2 2.2s1 2.2 2.2 2.2" stroke="#B8860B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
       </svg>
     </div>
     <strong>streak tracking</strong>
     <p>daily sync streaks that celebrate your consistency together.</p>
   </div>
 
-  <!-- wide: late night alerts -->
-  <div class="feat-card wide">
-    <div class="feat-icon-box fi-p">
+  <div class="fcard wide">
+    <div class="fib fip">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2a7 7 0 000 14M12 16v2M8 20h8" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M17 5A5 5 0 0021 9" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
-        <circle cx="19" cy="5" r="3" fill="#C4A8FF" stroke="#7C5CBF" stroke-width="1.2"/>
+        <path d="M12 3a7 7 0 000 14M12 17v2.5M9 21.5h6" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="18.5" cy="5.5" r="3" fill="#C4A8FF" stroke="#7C5CBF" stroke-width="1.3"/>
       </svg>
     </div>
-    <div class="feat-card-body">
-      <strong>late night alerts 🌙</strong>
-      <p>get a gentle notification if your partner is still on their phone after midnight. no surprises, no secrets.</p>
+    <div class="fbdy">
+      <strong>late night alerts &#127769;</strong>
+      <p>get a gentle notification if your partner is still on their phone after midnight. no more wondering.</p>
     </div>
   </div>
 
-  <!-- mood check-in -->
-  <div class="feat-card">
-    <div class="feat-icon-box fi-pk">
+  <div class="fcard">
+    <div class="fib fir">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="9" stroke="#E85D75" stroke-width="1.8"/>
-        <path d="M8.5 14.5S9.5 16 12 16s3.5-1.5 3.5-1.5" stroke="#E85D75" stroke-width="1.8" stroke-linecap="round"/>
-        <circle cx="9.5" cy="10.5" r="1.2" fill="#E85D75"/>
-        <circle cx="14.5" cy="10.5" r="1.2" fill="#E85D75"/>
+        <path d="M8.5 14.5S9.5 16.5 12 16.5s3.5-2 3.5-2" stroke="#E85D75" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="9.5" cy="10.5" r="1.3" fill="#E85D75"/>
+        <circle cx="14.5" cy="10.5" r="1.3" fill="#E85D75"/>
       </svg>
     </div>
     <strong>mood check-ins</strong>
-    <p>share how you're feeling. your partner always knows.</p>
+    <p>share how you&#39;re feeling. your partner always knows.</p>
   </div>
 
-  <!-- weekly wrapped -->
-  <div class="feat-card">
-    <div class="feat-icon-box fi-g">
+  <div class="fcard">
+    <div class="fib fig">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <rect x="3" y="3" width="18" height="18" rx="4" stroke="#4CAF82" stroke-width="1.8"/>
-        <path d="M7 14l3-3 2 2 4-5" stroke="#4CAF82" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 14.5l3-3.5 2.5 2.5 4-5" stroke="#4CAF82" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
     <strong>weekly wrapped</strong>
-    <p>a shareable monthly report of your habits as a couple.</p>
+    <p>a beautiful shareable report of your habits as a couple every month.</p>
   </div>
 
-  <!-- wide: couples leaderboard -->
-  <div class="feat-card wide">
-    <div class="feat-icon-box fi-y">
+  <div class="fcard wide">
+    <div class="fib fiy">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="9" y="3" width="6" height="18" rx="2" stroke="#B8860B" stroke-width="1.8"/>
-        <rect x="3" y="8" width="6" height="13" rx="2" stroke="#B8860B" stroke-width="1.8"/>
-        <rect x="15" y="6" width="6" height="15" rx="2" stroke="#B8860B" stroke-width="1.8"/>
+        <rect x="9" y="2" width="6" height="20" rx="2" stroke="#B8860B" stroke-width="1.8"/>
+        <rect x="2" y="8" width="7" height="14" rx="2" stroke="#B8860B" stroke-width="1.8"/>
+        <rect x="15" y="5" width="7" height="17" rx="2" stroke="#B8860B" stroke-width="1.8"/>
       </svg>
     </div>
-    <div class="feat-card-body">
-      <strong>couples leaderboard 🏆</strong>
+    <div class="fbdy">
+      <strong>couples leaderboard &#127942;</strong>
       <p>monthly ranking of the most transparent couples. top pairs win prizes. could you be the #1 couple?</p>
-      <div class="coming-soon-badge">✦ coming soon</div>
+      <div class="soon">&#10022; coming soon</div>
     </div>
   </div>
 
-  <!-- incognito detection -->
-  <div class="feat-card">
-    <div class="feat-icon-box fi-p">
+  <div class="fcard">
+    <div class="fib fip">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z" stroke="#7C5CBF" stroke-width="1.8"/>
+        <circle cx="12" cy="12" r="9" stroke="#7C5CBF" stroke-width="1.8"/>
         <path d="M9 9h.01M15 9h.01" stroke="#7C5CBF" stroke-width="2" stroke-linecap="round"/>
-        <path d="M7 14s1 3 5 3 5-3 5-3" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M3 3l18 18" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M7.5 14.5s1.2 2.5 4.5 2.5 4.5-2.5 4.5-2.5" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M4 4l16 16" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
       </svg>
     </div>
     <strong>incognito detection</strong>
     <p>see when private browsing was used and for how long.</p>
-    <div class="coming-soon-badge">✦ coming soon</div>
+    <div class="soon">&#10022; coming soon</div>
   </div>
 
-  <!-- AI weekly roast -->
-  <div class="feat-card">
-    <div class="feat-icon-box fi-r">
+  <div class="fcard">
+    <div class="fib fir">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2l1.5 4H18l-3.5 2.5 1.5 4L12 10l-4 2.5 1.5-4L6 6h4.5L12 2z" stroke="#E85D75" stroke-width="1.6" stroke-linejoin="round" fill="none"/>
-        <path d="M8 18c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="#E85D75" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12 2l1.8 4.5H19l-4 3 1.6 4.8L12 11.5l-4.6 2.8L9 9.5 5 6.5h5.2z" stroke="#E85D75" stroke-width="1.6" stroke-linejoin="round" fill="none"/>
+        <path d="M8.5 18.5c0-2 1.6-3.5 3.5-3.5s3.5 1.5 3.5 3.5" stroke="#E85D75" stroke-width="1.8" stroke-linecap="round"/>
       </svg>
     </div>
-    <strong>ai weekly roast 🔥</strong>
-    <p>a brutally honest AI summary of both your screen habits.</p>
-    <div class="coming-soon-badge">✦ coming soon</div>
+    <strong>ai weekly roast &#128293;</strong>
+    <p>a brutally honest AI take on both your screen habits.</p>
+    <div class="soon">&#10022; coming soon</div>
   </div>
 
 </div>
@@ -810,57 +382,59 @@ input[type="email"]:focus {
 
   </div>
 
-  <div class="footer">breakup. — the app that keeps you together 🩷<br/>© 2026 breakup. · ios & android · summer 2026</div>
+  <div class="foot">
+    breakup. &mdash; the app that keeps you together &#129657;<br>
+    &copy; 2026 breakup. &middot; ios &amp; android &middot; summer 2026
+  </div>
+
 </div>
 
 <script>
-  function setToggle(btn, val) {
-    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
+function setT(btn) {
+  var btns = document.querySelectorAll('.tbtn');
+  for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('on'); }
+  btn.classList.add('on');
+}
 
-  function handleSubmit() {
-    const email = document.getElementById('emailInput').value.trim();
-    const name  = document.getElementById('nameInput').value.trim();
-    if (!email || !email.includes('@')) {
-      document.getElementById('emailInput').focus();
-      document.getElementById('emailInput').style.borderColor = 'var(--red)';
-      setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 1500);
-      return;
-    }
-    document.getElementById('formContent').classList.add('hide');
-    document.getElementById('successState').classList.add('show');
-    launchConfetti();
+function doSub() {
+  var em = document.getElementById('em').value.trim();
+  if (!em || em.indexOf('@') < 0) {
+    var inp = document.getElementById('em');
+    inp.style.borderColor = '#E85D75';
+    inp.focus();
+    setTimeout(function() { inp.style.borderColor = ''; }, 1600);
+    return;
   }
+  document.getElementById('ff').classList.add('hide');
+  document.getElementById('ss').classList.add('show');
+  confetti();
+}
 
-  function launchConfetti() {
-    const colors = ['#E85D75','#5B9BD5','#4CAF82','#FFD166','#C4A8FF'];
-    for (let i = 0; i < 60; i++) {
-      const el = document.createElement('div');
-      el.className = 'confetti-piece';
-      el.style.cssText = `
-        left: ${Math.random()*100}vw;
-        top: ${Math.random()*30 + 20}vh;
-        background: ${colors[Math.floor(Math.random()*colors.length)]};
-        border-radius: ${Math.random()>0.5?'50%':'2px'};
-        width: ${Math.random()*8+6}px;
-        height: ${Math.random()*8+6}px;
-        animation: confettiFall ${Math.random()*1.5+0.8}s ease forwards;
-        animation-delay: ${Math.random()*0.4}s;
-      `;
-      document.body.appendChild(el);
-      setTimeout(()=>el.remove(), 2500);
-    }
+function confetti() {
+  var colors = ['#E85D75','#5B9BD5','#4CAF82','#FFD166','#C4A8FF','#FF9BBD'];
+  for (var i = 0; i < 55; i++) {
+    var el = document.createElement('div');
+    el.className = 'cp';
+    var size = Math.floor(Math.random() * 9) + 6;
+    var dur = (Math.random() * 1.2 + 0.9).toFixed(2);
+    var delay = (Math.random() * 0.5).toFixed(2);
+    var left = Math.floor(Math.random() * 100);
+    var top = Math.floor(Math.random() * 40 + 10);
+    var color = colors[Math.floor(Math.random() * colors.length)];
+    var radius = Math.random() > 0.5 ? '50%' : '2px';
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+    el.style.left = left + 'vw';
+    el.style.top = top + 'vh';
+    el.style.background = color;
+    el.style.borderRadius = radius;
+    el.style.opacity = '0';
+    el.style.animation = 'cff ' + dur + 's ease ' + delay + 's forwards';
+    document.body.appendChild(el);
+    var removeAfter = Math.ceil((parseFloat(dur) + parseFloat(delay) + 0.3) * 1000);
+    (function(elem, t) { setTimeout(function() { elem.remove(); }, t); })(el, removeAfter);
   }
-
-  const styleEl = document.createElement('style');
-  styleEl.textContent = `
-    @keyframes confettiFall {
-      0%   { opacity:1; transform: translateY(0) rotate(0deg) scale(1); }
-      100% { opacity:0; transform: translateY(200px) rotate(${Math.random()*360}deg) scale(0.5); }
-    }
-  `;
-  document.head.appendChild(styleEl);
+}
 </script>
 
 </body>
