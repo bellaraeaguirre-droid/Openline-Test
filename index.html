@@ -2,369 +2,491 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>breakup. — the app that keeps you together.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>breakup. — join the waitlist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --white: #FFFFFF;
-      --cream: #FDFAF5;
-      --black: #0F0F0F;
-      --red: #E63946;
-      --yellow: #FFD166;
-      --green: #06D6A0;
-      --blue: #118AB2;
-      --pink: #FF6B9D;
-      --orange: #FF9F1C;
-      --mid: #666;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 ```
-* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #F9F7FF;
+  --red: #E85D75;
+  --blue: #5B9BD5;
+  --dark: #1C1C1E;
+  --green: #4CAF82;
+  --yellow: #FFD166;
+  --purple: #C4A8FF;
+  --card: #FFFFFF;
+  --border: #EBEBF0;
+  --text-sub: #8A8A9A;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--cream);
-  font-family: 'DM Sans', sans-serif;
-  color: var(--black);
-  overflow-x: hidden;
-  cursor: none;
-}
-
-/* custom cursor */
-.cursor {
-  width: 20px; height: 20px;
-  background: var(--red);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, background 0.2s, width 0.2s, height 0.2s;
-  mix-blend-mode: multiply;
-}
-
-/* NAV */
-nav {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 22px 48px;
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: var(--cream);
-  border-bottom: 2px solid var(--black);
-}
-
-.nav-logo {
-  font-family: 'Fraunces', serif;
-  font-size: 22px; font-weight: 900; font-style: italic;
-  color: var(--black); letter-spacing: -0.5px;
-}
-
-.nav-logo span { color: var(--red); }
-
-.nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a { color: var(--mid); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-.nav-links a:hover { color: var(--black); }
-
-.nav-cta {
-  background: var(--black); color: var(--yellow);
-  border: 2px solid var(--black); padding: 10px 22px;
-  border-radius: 100px; font-size: 14px; font-weight: 600;
-  cursor: none; font-family: 'DM Sans', sans-serif;
-  box-shadow: 3px 3px 0 var(--red);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
-.nav-cta:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--red); }
-
-/* HERO */
-.hero {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--dark);
   min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 120px 48px 80px;
-  text-align: center;
-  position: relative;
+  overflow-x: hidden;
+}
+
+/* ── floating blobs ── */
+.blobs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
   overflow: hidden;
 }
-
-/* animated background blobs */
 .blob {
-  position: absolute; border-radius: 50%;
-  filter: blur(60px); opacity: 0.35;
-  animation: blobFloat 8s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.blob-1 { width: 400px; height: 400px; background: var(--pink); top: -100px; left: -100px; animation-delay: 0s; }
-.blob-2 { width: 300px; height: 300px; background: var(--yellow); top: 50px; right: -50px; animation-delay: 2s; }
-.blob-3 { width: 350px; height: 350px; background: var(--green); bottom: -50px; left: 30%; animation-delay: 4s; }
-.blob-4 { width: 250px; height: 250px; background: var(--blue); bottom: 100px; right: 10%; animation-delay: 1s; }
-
-@keyframes blobFloat {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(20px,-30px) scale(1.05); }
-  66% { transform: translate(-15px,15px) scale(0.95); }
-}
-
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--yellow); color: var(--black);
-  font-size: 12px; font-weight: 700;
-  padding: 6px 16px; border-radius: 100px;
-  margin-bottom: 32px;
-  border: 2px solid var(--black);
-  box-shadow: 3px 3px 0 var(--black);
-  position: relative; z-index: 1;
-  animation: fadeUp 0.6s ease both;
-}
-
-.hero-eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
-
-.hero-headline {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(72px, 10vw, 140px);
-  font-weight: 900; font-style: italic;
-  line-height: 0.9; letter-spacing: -4px;
-  color: var(--black);
-  margin-bottom: 16px;
-  position: relative; z-index: 1;
-  animation: fadeUp 0.6s ease 0.1s both;
-}
-
-.hero-headline .strike {
-  position: relative; display: inline-block;
-  color: var(--red);
-}
-
-.hero-headline .strike::after {
-  content: '';
   position: absolute;
-  left: 0; right: 0;
-  top: 50%; height: 6px;
-  background: var(--black);
-  transform: rotate(-2deg);
-  border-radius: 3px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.18;
+  animation: float 8s ease-in-out infinite;
+}
+.blob-1 { width: 420px; height: 420px; background: var(--red);   top: -100px; left: -120px; animation-delay: 0s; }
+.blob-2 { width: 340px; height: 340px; background: var(--blue);  bottom: 60px; right: -80px; animation-delay: 3s; }
+.blob-3 { width: 260px; height: 260px; background: var(--yellow); top: 40%; left: 50%; animation-delay: 1.5s; }
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-24px) scale(1.04); }
 }
 
-.hero-tagline {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(18px, 2.5vw, 28px);
-  font-weight: 400; font-style: italic;
-  color: var(--mid); margin-bottom: 16px;
-  position: relative; z-index: 1;
-  animation: fadeUp 0.6s ease 0.2s both;
+/* ── layout ── */
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
 }
 
-.hero-sub {
-  font-size: 16px; color: var(--mid); line-height: 1.6;
-  max-width: 520px; margin: 0 auto 40px;
-  position: relative; z-index: 1;
-  animation: fadeUp 0.6s ease 0.3s both;
+/* ── logo ── */
+.logo {
+  font-style: italic;
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--red);
+  letter-spacing: -0.5px;
 }
 
-.hero-sub strong { color: var(--black); font-weight: 600; }
-
-/* hero form */
-.hero-form {
-  display: flex; gap: 10px; max-width: 420px;
-  margin: 0 auto 12px;
-  position: relative; z-index: 1;
-  animation: fadeUp 0.6s ease 0.4s both;
+/* ── characters ── */
+.characters {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  justify-content: center;
+}
+.char-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.char-card {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 20px 18px 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  border: 1.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.3s ease;
+}
+.char-card:hover { transform: translateY(-6px); }
+.char-card.pink-tint  { background: #FFF4F6; }
+.char-card.blue-tint  { background: #F0F5FF; }
+.char-name {
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--dark);
+}
+.char-time {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--dark);
+}
+.char-sub {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+.online-heart {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
 }
 
-.hero-form input {
-  flex: 1; padding: 14px 20px;
-  border: 2px solid var(--black); border-radius: 100px;
-  font-size: 15px; font-family: 'DM Sans', sans-serif;
-  background: var(--white); color: var(--black); outline: none;
-  box-shadow: 3px 3px 0 var(--black);
+/* ── headline ── */
+.headline {
+  text-align: center;
+}
+.headline h1 {
+  font-size: clamp(26px, 6vw, 36px);
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--dark);
+}
+.headline h1 em {
+  color: var(--red);
+  font-style: italic;
+}
+.headline p {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-sub);
+  line-height: 1.6;
 }
 
-.hero-form input::placeholder { color: #AAA; }
-.hero-form input:focus { border-color: var(--red); box-shadow: 3px 3px 0 var(--red); }
+/* ── pill chips ── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1.5px solid;
+}
+.chip.r { background: #FFF0F3; border-color: #FFD0D9; color: var(--red); }
+.chip.b { background: #EFF4FF; border-color: #C8D9FF; color: var(--blue); }
+.chip.g { background: #F0FFF7; border-color: #B8EDCF; color: var(--green); }
+.chip.y { background: #FFFBEF; border-color: #FFE999; color: #B8860B; }
 
-.btn-primary {
-  background: var(--black); color: var(--yellow);
-  border: 2px solid var(--black); padding: 14px 28px;
-  border-radius: 100px; font-size: 15px; font-weight: 700;
-  cursor: none; font-family: 'DM Sans', sans-serif;
-  box-shadow: 3px 3px 0 var(--red);
-  transition: transform 0.15s, box-shadow 0.15s;
-  white-space: nowrap;
+/* ── waitlist card ── */
+.waitlist-card {
+  background: var(--card);
+  border-radius: 28px;
+  padding: 32px 28px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+  border: 1.5px solid var(--border);
+  width: 100%;
+}
+.waitlist-card h2 {
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.waitlist-card .sub {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sub);
+  margin-bottom: 24px;
 }
 
-.btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--red); }
+/* counter */
+.counter-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.avatars-stack {
+  display: flex;
+}
+.av {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: -8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.av:first-child { margin-left: 0; }
+.av.a1 { background: #FFD6DD; }
+.av.a2 { background: #D6E6FF; }
+.av.a3 { background: #D6F5E6; }
+.av.a4 { background: #FFF3CC; }
+.counter-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-sub);
+}
+.counter-text strong { color: var(--dark); }
 
-.hero-note {
-  font-size: 12px; color: var(--mid);
-  position: relative; z-index: 1;
-  animation: fadeUp 0.6s ease 0.5s both;
+/* form */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.input-wrap {
+  position: relative;
+}
+.input-wrap svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.4;
+}
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 14px 14px 14px 42px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input[type="text"]::placeholder,
+input[type="email"]::placeholder { color: #BABAC8; font-weight: 600; }
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(232,93,117,0.12);
 }
 
-/* PROOF STRIP */
-.proof {
-  background: var(--black); padding: 20px 48px;
-  display: flex; align-items: center; justify-content: center;
-  gap: 48px; flex-wrap: wrap;
-  border-top: 2px solid var(--black);
+/* couple toggle */
+.couple-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-sub);
+  margin-bottom: -4px;
+}
+.toggle-row {
+  display: flex;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 4px;
+  gap: 4px;
+}
+.toggle-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-sub);
+  transition: background 0.2s, color 0.2s;
+}
+.toggle-btn.active {
+  background: var(--card);
+  color: var(--dark);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.proof-item { text-align: center; }
-.proof-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 900; font-style: italic; color: var(--yellow); }
-.proof-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
-.proof-div { width: 1px; height: 32px; background: rgba(255,255,255,0.15); }
+/* submit button */
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  box-shadow: 0 4px 16px rgba(232,93,117,0.35);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-submit:hover {
+  background: #D44E66;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232,93,117,0.4);
+}
+.btn-submit:active { transform: translateY(0); }
 
-/* SECTIONS */
-.section { padding: 100px 48px; }
-.section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
-
-.section-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(36px, 4vw, 54px);
-  font-weight: 900; font-style: italic;
-  line-height: 1.05; letter-spacing: -1.5px;
-  color: var(--black); margin-bottom: 52px; max-width: 560px;
+.privacy-note {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #BABAC8;
+  margin-top: 12px;
 }
 
-/* WHAT IT SHOWS */
-.shows { background: var(--yellow); border-top: 2px solid var(--black); border-bottom: 2px solid var(--black); padding: 80px 48px; }
-.shows .section-title { color: var(--black); margin-bottom: 40px; }
-.shows-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+/* ── success state ── */
+.success-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 8px 0;
+}
+.success-state.show { display: flex; }
+.form-content.hide { display: none; }
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: #F0FFF7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #B8EDCF;
+}
+.success-state h3 {
+  font-size: 20px;
+  font-weight: 900;
+}
+.success-state p {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+.position-badge {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--dark);
+}
+.position-badge span { color: var(--red); }
 
-.shows-card {
-  background: var(--white); border: 2px solid var(--black);
-  border-radius: 20px; padding: 22px 18px; text-align: center;
-  box-shadow: 4px 4px 0 var(--black);
-  transition: transform 0.2s, box-shadow 0.2s;
+/* ── features section ── */
+.features-section {
+  width: 100%;
+}
+.features-title {
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.features-sub {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sub);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.feat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.feat-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+.feat-card:hover { transform: translateY(-3px); }
+.feat-card.wide {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+}
+.feat-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.fi-r  { background: #FFF0F3; }
+.fi-b  { background: #EFF4FF; }
+.fi-g  { background: #F0FFF7; }
+.fi-y  { background: #FFFBEF; }
+.fi-p  { background: #F5F0FF; }
+.fi-pk { background: #FFF4F9; }
+.feat-card-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-sub);
+}
+.feat-card strong {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--dark);
+  line-height: 1.3;
+}
+.feat-card p {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+.feat-card.wide .feat-card-body { flex: 1; }
+.feat-card.wide .feat-card-body strong { font-size: 14px; }
+.feat-card.wide .feat-card-body p { font-size: 12px; }
+.coming-soon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-sub);
+  margin-top: 2px;
+  width: fit-content;
 }
 
-.shows-card:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--black); }
-.shows-icon { font-size: 32px; margin-bottom: 10px; }
-.shows-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
-.shows-desc { font-size: 12px; color: var(--mid); line-height: 1.5; }
-
-/* HOW IT WORKS */
-.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-
-.step {
-  border-radius: 24px; padding: 32px 26px;
-  border: 2px solid var(--black);
-  box-shadow: 5px 5px 0 var(--black);
-  transition: transform 0.2s, box-shadow 0.2s;
+/* ── footer ── */
+.footer {
+  font-size: 12px;
+  font-weight: 600;
+  color: #BABAC8;
+  text-align: center;
 }
 
-.step:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--black); }
-.step-1 { background: #FFE8ED; }
-.step-2 { background: #FFF8E0; }
-.step-3 { background: #E0FBF4; }
-
-.step-num { font-family: 'Fraunces', serif; font-size: 48px; font-weight: 900; font-style: italic; color: rgba(0,0,0,0.1); line-height: 1; margin-bottom: 14px; }
-.step-icon { font-size: 30px; margin-bottom: 12px; }
-.step-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 800; color: var(--black); margin-bottom: 8px; }
-.step-desc { font-size: 14px; color: #555; line-height: 1.6; }
-
-/* NOT SURVEILLANCE */
-.honest { background: var(--black); padding: 100px 48px; }
-.honest .section-label { color: var(--yellow); }
-.honest .section-title { color: var(--white); }
-.honest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.honest-row { display: flex; align-items: flex-start; gap: 14px; padding: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; }
-.honest-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-.honest-title { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-.honest-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
-
-/* WHO */
-.who { background: var(--pink); border-top: 2px solid var(--black); border-bottom: 2px solid var(--black); padding: 80px 48px; }
-.who .section-title { color: var(--black); }
-.who-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
-.who-card { background: var(--white); border: 2px solid var(--black); border-radius: 20px; padding: 26px 22px; box-shadow: 4px 4px 0 var(--black); }
-.who-icon { font-size: 28px; margin-bottom: 12px; }
-.who-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 800; color: var(--black); margin-bottom: 6px; }
-.who-desc { font-size: 13px; color: var(--mid); line-height: 1.6; }
-
-/* TESTIMONIALS */
-.testimonials { padding: 100px 48px; }
-.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-.testimonial { background: var(--white); border: 2px solid var(--black); border-radius: 20px; padding: 26px 22px; box-shadow: 4px 4px 0 var(--black); }
-.testimonial-stars { font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
-.testimonial-quote { font-family: 'Fraunces', serif; font-size: 15px; font-style: italic; color: var(--black); line-height: 1.7; margin-bottom: 18px; }
-.testimonial-avatar { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--black); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; font-family: 'Fraunces', serif; flex-shrink: 0; }
-.testimonial-author { display: flex; align-items: center; gap: 10px; }
-.testimonial-name { font-size: 13px; font-weight: 700; color: var(--black); }
-.testimonial-detail { font-size: 11px; color: var(--mid); }
-
-/* FAQ */
-.faq { background: var(--green); border-top: 2px solid var(--black); padding: 100px 48px; }
-.faq .section-title { color: var(--black); }
-.faq-list { max-width: 700px; }
-.faq-item { border: 2px solid var(--black); border-radius: 16px; margin-bottom: 10px; overflow: hidden; box-shadow: 3px 3px 0 var(--black); background: var(--white); }
-.faq-q { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; cursor: none; font-size: 15px; font-weight: 700; color: var(--black); gap: 16px; }
-.faq-arrow { font-size: 18px; transition: transform 0.2s; flex-shrink: 0; }
-.faq-a { display: none; padding: 16px 22px 18px; font-size: 14px; color: var(--mid); line-height: 1.7; border-top: 1.5px solid rgba(0,0,0,0.08); }
-.faq-item.open .faq-arrow { transform: rotate(180deg); }
-.faq-item.open .faq-a { display: block; }
-
-/* CTA BANDS */
-.cta-band { padding: 56px 48px; text-align: center; border-top: 2px solid var(--black); border-bottom: 2px solid var(--black); }
-.cta-band-yellow { background: var(--yellow); }
-.cta-band-blue { background: #C8F0FF; }
-.cta-band-title { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 900; font-style: italic; color: var(--black); margin-bottom: 24px; }
-.cta-band-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto 10px; }
-.cta-band-form input { flex: 1; padding: 13px 18px; border: 2px solid var(--black); border-radius: 100px; font-size: 14px; font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); outline: none; box-shadow: 3px 3px 0 var(--black); }
-.cta-band-form button { background: var(--black); color: var(--yellow); border: 2px solid var(--black); padding: 13px 24px; border-radius: 100px; font-size: 14px; font-weight: 700; cursor: none; font-family: 'DM Sans', sans-serif; box-shadow: 3px 3px 0 var(--red); transition: transform 0.15s; white-space: nowrap; }
-.cta-band-form button:hover { transform: translate(-2px,-2px); }
-.cta-band-note { font-size: 12px; color: var(--mid); }
-
-/* LAUNCH */
-.launch { background: var(--blue); border-top: 2px solid var(--black); border-bottom: 2px solid var(--black); padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.launch-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 900; font-style: italic; color: var(--white); margin-bottom: 16px; }
-.launch-items { display: flex; gap: 20px; flex-wrap: wrap; }
-.launch-item { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--white); }
-.launch-dot { width: 8px; height: 8px; border-radius: "50%"; background: var(--yellow); border-radius: 50%; }
-
-/* WAITLIST */
-.waitlist { padding: 100px 48px; text-align: center; max-width: 620px; margin: 0 auto; }
-.waitlist .section-title { margin: 0 auto 16px; }
-.waitlist-sub { font-size: 16px; color: var(--mid); margin-bottom: 40px; line-height: 1.6; }
-.waitlist-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto 12px; }
-.waitlist-input { flex: 1; padding: 14px 20px; border: 2px solid var(--black); border-radius: 100px; font-size: 15px; font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); outline: none; box-shadow: 3px 3px 0 var(--black); }
-.waitlist-input:focus { border-color: var(--red); box-shadow: 3px 3px 0 var(--red); }
-.waitlist-input::placeholder { color: #AAA; }
-.waitlist-note { font-size: 12px; color: var(--mid); }
-.waitlist-count { display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 28px; border: 2px solid var(--black); box-shadow: 3px 3px 0 var(--black); }
-.success-msg { display: none; font-family: 'Fraunces', serif; font-style: italic; color: var(--red); font-size: 16px; font-weight: 700; margin-top: 12px; }
-
-/* FOOTER */
-footer { background: var(--black); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
-.footer-logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 900; font-style: italic; color: var(--yellow); }
-.footer-logo span { color: var(--red); }
-.footer-note { font-size: 13px; color: rgba(255,255,255,0.35); }
-
-/* ANIMATIONS */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-
-@media (max-width: 768px) {
-  body { cursor: auto; }
-  .cursor { display: none; }
-  nav { padding: 16px 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 100px 20px 60px; }
-  .proof { gap: 20px; padding: 20px; }
-  .proof-div { display: none; }
-  .section, .honest, .testimonials { padding: 64px 20px; }
-  .shows, .who, .faq, .launch { padding: 64px 20px; }
-  .shows-grid { grid-template-columns: repeat(2,1fr); }
-  .steps { grid-template-columns: 1fr; }
-  .who-grid { grid-template-columns: 1fr; }
-  .honest-grid { grid-template-columns: 1fr; }
-  .testimonials-grid { grid-template-columns: 1fr; }
-  .cta-band { padding: 48px 20px; }
-  .cta-band-form { flex-direction: column; }
-  .waitlist { padding: 80px 20px; }
-  .waitlist-form { flex-direction: column; }
-  footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px; }
-  .hero-form { flex-direction: column; }
+/* ── confetti ── */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
 }
 ```
 
@@ -372,298 +494,374 @@ footer { background: var(--black); padding: 32px 48px; display: flex; justify-co
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-
-  <nav>
-    <div class="nav-logo">breakup<span>.</span></div>
-    <ul class="nav-links">
-      <li><a href="#what">What it shows</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#waitlist">Join waitlist</a></li>
-    </ul>
-    <button class="nav-cta" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Get early access</button>
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
-
-```
-<div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Apps. Sites. All of it. Together.</div>
-
-<h1 class="hero-headline"><span class="strike">breakup</span>.</h1>
-
-<p class="hero-tagline">the app that keeps you together.</p>
-
-<p class="hero-sub">
-  See exactly what apps and websites your partner is using, in real time.
-  <strong>Both of you opted in. Both of you see everything.</strong>
-  No secrets. No surveillance. Just honesty.
-</p>
-
-<div class="hero-form">
-  <input type="email" id="heroEmail" placeholder="your@email.com"/>
-  <button class="btn-primary" onclick="handleHero()">Join the waitlist</button>
+<div class="blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
 </div>
-<p class="hero-note">Free during beta · iOS & Android · No spam.</p>
+
+<div class="wrap">
+
+  <!-- logo -->
+
+  <div class="logo">breakup.</div>
+
+  <!-- characters -->
+
+  <div class="characters">
+    <div class="char-wrap">
+      <div class="char-card pink-tint">
+        <!-- You character (pink) -->
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="34" fill="#FFD6DD" stroke="#E85D75" stroke-width="1.5"/>
+          <!-- hair -->
+          <ellipse cx="36" cy="18" rx="18" ry="10" fill="#E85D75"/>
+          <ellipse cx="20" cy="26" rx="7" ry="12" fill="#E85D75"/>
+          <ellipse cx="52" cy="26" rx="7" ry="12" fill="#E85D75"/>
+          <!-- face -->
+          <circle cx="29" cy="34" r="3.5" fill="white"/>
+          <circle cx="43" cy="34" r="3.5" fill="white"/>
+          <circle cx="30" cy="34.5" r="1.8" fill="#1C1C1E"/>
+          <circle cx="44" cy="34.5" r="1.8" fill="#1C1C1E"/>
+          <circle cx="30.8" cy="33.8" r="0.8" fill="white"/>
+          <circle cx="44.8" cy="33.8" r="0.8" fill="white"/>
+          <!-- blush -->
+          <ellipse cx="25" cy="40" rx="5" ry="3" fill="#E85D75" opacity="0.3"/>
+          <ellipse cx="47" cy="40" rx="5" ry="3" fill="#E85D75" opacity="0.3"/>
+          <!-- smile -->
+          <path d="M28 44 Q36 51 44 44" stroke="#E85D75" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="char-name">You</div>
+        <div class="char-time">3h 12m</div>
+        <div class="online-heart">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 10.5S1 7 1 3.5A2.5 2.5 0 016 2.2 2.5 2.5 0 0111 3.5C11 7 6 10.5 6 10.5z" fill="#4CAF82" stroke="#2E8B57" stroke-width="1"/>
+          </svg>
+          online
+        </div>
+      </div>
+    </div>
+
+```
+<div class="char-wrap" style="margin-top: 20px;">
+  <div class="char-card blue-tint">
+    <!-- Dylan character (blue) -->
+    <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+      <circle cx="36" cy="36" r="34" fill="#D6E6FF" stroke="#5B9BD5" stroke-width="1.5"/>
+      <!-- hair messy -->
+      <ellipse cx="36" cy="17" rx="16" ry="9" fill="#3A3A4A"/>
+      <path d="M20 22 Q16 14 22 12 Q28 10 30 16" fill="#3A3A4A"/>
+      <path d="M52 22 Q56 14 50 12 Q44 10 42 16" fill="#3A3A4A"/>
+      <path d="M32 12 Q36 6 42 10" stroke="#3A3A4A" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- glasses -->
+      <rect x="23" y="30" width="10" height="7" rx="3" stroke="#3A3A4A" stroke-width="1.5" fill="rgba(91,155,213,0.2)"/>
+      <rect x="38" y="30" width="10" height="7" rx="3" stroke="#3A3A4A" stroke-width="1.5" fill="rgba(91,155,213,0.2)"/>
+      <path d="M33 33 L38 33" stroke="#3A3A4A" stroke-width="1.5"/>
+      <!-- wink eye -->
+      <circle cx="28" cy="33.5" r="1.5" fill="#1C1C1E"/>
+      <circle cx="28.7" cy="32.8" r="0.6" fill="white"/>
+      <!-- wink -->
+      <path d="M41 31.5 Q43 33 45 31.5" stroke="#1C1C1E" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <!-- blush -->
+      <ellipse cx="25" cy="40" rx="4.5" ry="2.5" fill="#5B9BD5" opacity="0.25"/>
+      <ellipse cx="47" cy="40" rx="4.5" ry="2.5" fill="#5B9BD5" opacity="0.25"/>
+      <!-- smile -->
+      <path d="M29 44 Q36 50 43 44" stroke="#5B9BD5" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="char-name">Dylan</div>
+    <div class="char-time">2h 48m</div>
+    <div class="online-heart">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M6 10.5S1 7 1 3.5A2.5 2.5 0 016 2.2 2.5 2.5 0 0111 3.5C11 7 6 10.5 6 10.5z" fill="#4CAF82" stroke="#2E8B57" stroke-width="1"/>
+      </svg>
+      online
+    </div>
+  </div>
+</div>
 ```
 
-  </section>
-
-  <!-- PROOF STRIP -->
-
-  <div class="proof">
-    <div class="proof-item"><div class="proof-num">142</div><div class="proof-label">couples on waitlist</div></div>
-    <div class="proof-div"></div>
-    <div class="proof-item"><div class="proof-num">2</div><div class="proof-label">platforms (iOS & Android)</div></div>
-    <div class="proof-div"></div>
-    <div class="proof-item"><div class="proof-num">100%</div><div class="proof-label">mutual consent required</div></div>
-    <div class="proof-div"></div>
-    <div class="proof-item"><div class="proof-num">$0</div><div class="proof-label">free during beta</div></div>
   </div>
 
-  <!-- WHAT IT SHOWS -->
+  <!-- headline -->
 
-  <div class="shows" id="what">
-    <div class="section-label">What breakup. tracks</div>
-    <div class="section-title">Apps, sites, and everything in between.</div>
-    <div class="shows-grid">
-      <div class="shows-card"><div class="shows-icon">📱</div><div class="shows-title">Social apps</div><div class="shows-desc">Instagram, TikTok, Snapchat, Twitter, and more.</div></div>
-      <div class="shows-card"><div class="shows-icon">🌐</div><div class="shows-title">Websites</div><div class="shows-desc">Every domain visited, how long, how often.</div></div>
-      <div class="shows-card"><div class="shows-icon">📺</div><div class="shows-title">Streaming</div><div class="shows-desc">Netflix, YouTube, Hulu, Twitch, and more.</div></div>
-      <div class="shows-card"><div class="shows-icon">🎮</div><div class="shows-title">Gaming & more</div><div class="shows-desc">Discord, games, any app using the internet.</div></div>
-    </div>
+  <div class="headline">
+    <h1>the app that keeps<br/><em>you together.</em></h1>
+    <p>See what your partner's really doing online. Mutual, consensual, honest. No secrets, no drama.</p>
   </div>
 
-  <!-- HOW IT WORKS -->
+  <!-- chips -->
 
-  <section class="section" id="how">
-    <div class="section-label">How it works</div>
-    <div class="section-title">Three steps. Zero drama.</div>
-    <div class="steps">
-      <div class="step step-1">
-        <div class="step-num">01</div>
-        <div class="step-icon">📲</div>
-        <div class="step-title">Both download</div>
-        <div class="step-desc">You and your partner each download breakup. and create an account. Works on iPhone and Android. This only activates if both of you choose to share.</div>
-      </div>
-      <div class="step step-2">
-        <div class="step-num">02</div>
-        <div class="step-icon">🔗</div>
-        <div class="step-title">Connect together</div>
-        <div class="step-desc">Pair your accounts with a shared code. Both phones enable a lightweight profile that logs app and site activity as you browse.</div>
-      </div>
-      <div class="step step-3">
-        <div class="step-num">03</div>
-        <div class="step-icon">👀</div>
-        <div class="step-title">See everything</div>
-        <div class="step-desc">View each other's apps and sites in real time. You see their data exactly the way they see yours. Always symmetric. Always mutual.</div>
-      </div>
+  <div class="chips">
+    <div class="chip r">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="3" stroke="#E85D75" stroke-width="1.5"/><circle cx="6" cy="6" r="2" fill="#E85D75"/></svg>
+      iOS & Android
     </div>
-  </section>
-
-  <!-- CTA BAND 1 -->
-
-  <div class="cta-band cta-band-yellow">
-    <div class="cta-band-title">Ready to stop wondering?</div>
-    <div class="cta-band-form">
-      <input type="email" id="band1Email" placeholder="your@email.com"/>
-      <button onclick="handleBand('band1Email','band1Success')">Join free</button>
+    <div class="chip b">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L7.5 4.5H11L8.5 6.8L9.5 10L6 7.8L2.5 10L3.5 6.8L1 4.5H4.5z" stroke="#5B9BD5" stroke-width="1.2" fill="none"/></svg>
+      Free beta
     </div>
-    <div id="band1Success" style="display:none;color:var(--red);font-weight:700;font-style:italic;font-family:'Fraunces',serif;margin-top:8px;font-size:16px;">✓ You're on the list!</div>
-    <div class="cta-band-note">Free during beta. No spam.</div>
-  </div>
-
-  <!-- WHO -->
-
-  <div class="who">
-    <div class="section-label">Who it's for</div>
-    <div class="section-title">You're not alone in this.</div>
-    <div class="who-grid">
-      <div class="who-card"><div class="who-icon">💔</div><div class="who-title">Rebuilding after betrayal</div><div class="who-desc">Had a breach of trust? breakup. gives you both a way to show honesty without just asking for it.</div></div>
-      <div class="who-card"><div class="who-icon">📵</div><div class="who-title">Tired of phone jealousy</div><div class="who-desc">Silent tension over what they're doing on their phone. breakup. replaces that anxiety with actual transparency.</div></div>
-      <div class="who-card"><div class="who-icon">🌱</div><div class="who-title">Building better habits</div><div class="who-desc">Both want less doomscrolling and more presence? Shared accountability is the most powerful behavior change tool there is.</div></div>
+    <div class="chip g">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4CAF82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      100% consensual
+    </div>
+    <div class="chip y">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v5l3 2" stroke="#B8860B" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="5" stroke="#B8860B" stroke-width="1.2"/></svg>
+      Summer 2026
     </div>
   </div>
 
-  <!-- NOT SURVEILLANCE -->
+  <!-- waitlist card -->
 
-  <div class="honest">
-    <div class="section-label">Let's be direct</div>
-    <div class="section-title">This isn't spyware. Here's the difference.</div>
-    <div class="honest-grid">
-      <div class="honest-row"><div class="honest-icon">✅</div><div><div class="honest-title">Both people download the same app</div><div class="honest-desc">No hidden version. You and your partner install the exact same app and see the exact same thing.</div></div></div>
-      <div class="honest-row"><div class="honest-icon">✅</div><div><div class="honest-title">Sharing requires mutual consent</div><div class="honest-desc">Nothing is shared until both partners explicitly opt in. One person cannot activate it for the other.</div></div></div>
-      <div class="honest-row"><div class="honest-icon">✅</div><div><div class="honest-title">Either person can pause anytime</div><div class="honest-desc">No questions asked. If you want to stop sharing, you can. Your partner is notified immediately.</div></div></div>
-      <div class="honest-row"><div class="honest-icon">✅</div><div><div class="honest-title">You see their data, they see yours</div><div class="honest-desc">Always symmetric. There's no "watcher" and "watched." Both people have identical visibility.</div></div></div>
-    </div>
+  <div class="waitlist-card">
+    <h2>join the waitlist 💌</h2>
+    <p class="sub">be first when we launch. spots are limited.</p>
+
+```
+<!-- counter -->
+<div class="counter-row">
+  <div class="avatars-stack">
+    <div class="av a1">🫶</div>
+    <div class="av a2">💙</div>
+    <div class="av a3">💚</div>
+    <div class="av a4">💛</div>
   </div>
+  <div class="counter-text"><strong>142 couples</strong> already waiting</div>
+</div>
 
-  <!-- TESTIMONIALS -->
-
-  <section class="testimonials">
-    <div class="section-label">Early feedback</div>
-    <div class="section-title">What beta users are saying.</div>
-    <div class="testimonials-grid">
-      <div class="testimonial">
-        <div class="testimonial-stars">★★★★★</div>
-        <div class="testimonial-quote">"We both agreed to try it for a month. Way less passive aggression. It completely changed how we talk about screen time."</div>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar" style="background:#FFE8ED;">A</div>
-          <div><div class="testimonial-name">Aisha & Marcus</div><div class="testimonial-detail">Together 3 years · Los Angeles</div></div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-stars">★★★★★</div>
-        <div class="testimonial-quote">"My partner had anxiety about what I was doing online. This basically made that disappear. We both feel so much better."</div>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar" style="background:#E0FBF4;">J</div>
-          <div><div class="testimonial-name">Jake & Riley</div><div class="testimonial-detail">Together 1 year · Chicago</div></div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-stars">★★★★☆</div>
-        <div class="testimonial-quote">"Honestly I was skeptical but it works exactly as described. We both see the same thing. No weirdness, no power imbalance."</div>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar" style="background:#FFF8E0;">S</div>
-          <div><div class="testimonial-name">Sofia & Dev</div><div class="testimonial-detail">Together 2 years · New York</div></div>
-        </div>
-      </div>
+<!-- form -->
+<div class="form-content" id="formContent">
+  <div class="field-group">
+    <div class="input-wrap">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4a1 1 0 011-1h10a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" stroke="#1C1C1E" stroke-width="1.5"/><path d="M2 4l6 5 6-5" stroke="#1C1C1E" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="email" id="emailInput" placeholder="your email address" autocomplete="email"/>
     </div>
-  </section>
 
-  <!-- CTA BAND 2 -->
-
-  <div class="cta-band cta-band-blue">
-    <div class="cta-band-title">Sounds like something you need?</div>
-    <div class="cta-band-form">
-      <input type="email" id="band2Email" placeholder="your@email.com"/>
-      <button onclick="handleBand('band2Email','band2Success')">Get early access</button>
+    <div class="input-wrap">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="#1C1C1E" stroke-width="1.5"/><path d="M2 14c0-3 2.5-5 6-5s6 2 6 5" stroke="#1C1C1E" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="text" id="nameInput" placeholder="your first name" autocomplete="given-name"/>
     </div>
-    <div id="band2Success" style="display:none;color:var(--red);font-weight:700;font-style:italic;font-family:'Fraunces',serif;margin-top:8px;font-size:16px;">✓ You're on the list!</div>
-    <div class="cta-band-note">Free during beta. No spam.</div>
-  </div>
 
-  <!-- LAUNCH INFO -->
-
-  <div class="launch">
     <div>
-      <div class="launch-title">What to expect when you join</div>
-      <div class="launch-items">
-        <div class="launch-item"><span class="launch-dot"></span>Free during beta (launching summer 2026)</div>
-        <div class="launch-item"><span class="launch-dot"></span>iOS & Android at launch</div>
-        <div class="launch-item"><span class="launch-dot"></span>Freemium after launch, couples pricing</div>
-        <div class="launch-item"><span class="launch-dot"></span>Early access members get first beta spots</div>
+      <div class="couple-label">signing up as</div>
+      <div class="toggle-row" style="margin-top: 8px;">
+        <button class="toggle-btn active" onclick="setToggle(this, 'solo')">just me 🙋</button>
+        <button class="toggle-btn" onclick="setToggle(this, 'couple')">as a couple 💑</button>
       </div>
+    </div>
+
+    <button class="btn-submit" onclick="handleSubmit()">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 15.5S2 11 2 6A4 4 0 019 3.5 4 4 0 0116 6C16 11 9 15.5 9 15.5z" fill="white" opacity="0.9"/></svg>
+      get early access
+    </button>
+
+    <p class="privacy-note">🔒 no spam, ever. unsubscribe anytime. your data stays private.</p>
+  </div>
+</div>
+
+<!-- success -->
+<div class="success-state" id="successState">
+  <div class="success-icon">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+      <path d="M15 26S4 18.5 4 10A5.5 5.5 0 0115 6.5 5.5 5.5 0 0126 10C26 18.5 15 26 15 26z" fill="#4CAF82" stroke="#2E8B57" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <h3>you're in! 🎉</h3>
+  <p>we'll email you the moment breakup. is ready.</p>
+  <div class="position-badge">you're <span>#143</span> on the waitlist</div>
+  <p style="font-size: 12px; color: var(--text-sub);">share with your partner so you both get early access together</p>
+</div>
+```
+
+  </div>
+
+  <!-- features section -->
+
+  <div class="features-section">
+    <h2 class="features-title">everything you get ✨</h2>
+    <p class="features-sub">built for couples who want nothing to hide</p>
+    <div class="feat-grid">
+
+```
+  <!-- wide: live activity -->
+  <div class="feat-card wide">
+    <div class="feat-icon-box fi-r">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="#E85D75" stroke-width="1.8"/>
+        <path d="M8 12h4l2-4 2 6 1-2h1" stroke="#E85D75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="feat-card-body">
+      <strong>live activity feed</strong>
+      <p>see what your partner is doing on their phone right now, updating every few minutes. real data, no guessing.</p>
     </div>
   </div>
 
-  <!-- FAQ -->
+  <!-- full browsing history -->
+  <div class="feat-card">
+    <div class="feat-icon-box fi-b">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="11" cy="11" r="7" stroke="#5B9BD5" stroke-width="1.8"/>
+        <path d="M17 17l3 3" stroke="#5B9BD5" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M8 11h6M11 8v6" stroke="#5B9BD5" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <strong>full browsing history</strong>
+    <p>every website, every timestamp. the complete picture.</p>
+  </div>
 
-  <div class="faq" id="faq">
-    <div class="section-label">Questions</div>
-    <div class="section-title">Things people ask.</div>
-    <div class="faq-list">
-      <div class="faq-item open">
-        <div class="faq-q" onclick="toggleFaq(this)">What exactly does it show, apps or just websites? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a">Both. breakup. shows which apps are actively using the internet (Instagram, TikTok, YouTube, games, Discord, etc.) and which websites are being visited, along with how long and how often. It's a full picture, not just browser history.</div>
-      </div>
-      <div class="faq-item open">
-        <div class="faq-q" onclick="toggleFaq(this)">Can my partner see it without me knowing? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a">No. Sharing requires both people to download the same app, create accounts, and actively pair together. Your partner cannot activate this without your explicit participation.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Does it show private or incognito browsing? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a">Private/incognito browsing is not tracked by default. We built it this way intentionally so both partners feel genuinely comfortable opting in, not pressured.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Does it drain my battery or slow my phone? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a">breakup. runs as a lightweight background profile. Battery and performance impact is minimal, similar to any standard VPN or parental control profile.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What if I want to stop sharing? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a">You can pause sharing anytime from the app with one tap. Your partner will be notified that you've paused, but won't see why. No punishment, no lock-in.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Is this legal? <span class="faq-arrow">↓</span></div>
-        <div class="faq-a">Yes. Because both parties explicitly consent and both see the same data, breakup. operates entirely within legal boundaries in all US states. It's fundamentally different from covert monitoring apps, which are illegal in most jurisdictions.</div>
-      </div>
+  <!-- streak tracking -->
+  <div class="feat-card">
+    <div class="feat-icon-box fi-y">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M13 2C13 2 7 8 7 13a5 5 0 0010 0c0-2-1.5-4-1.5-4S14 11 12 11c-1 0-2 .8-2 2s1 2 2 2" stroke="#B8860B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+    <strong>streak tracking</strong>
+    <p>daily sync streaks that celebrate your consistency together.</p>
+  </div>
+
+  <!-- wide: late night alerts -->
+  <div class="feat-card wide">
+    <div class="feat-icon-box fi-p">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2a7 7 0 000 14M12 16v2M8 20h8" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M17 5A5 5 0 0021 9" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="19" cy="5" r="3" fill="#C4A8FF" stroke="#7C5CBF" stroke-width="1.2"/>
+      </svg>
+    </div>
+    <div class="feat-card-body">
+      <strong>late night alerts 🌙</strong>
+      <p>get a gentle notification if your partner is still on their phone after midnight. no surprises, no secrets.</p>
     </div>
   </div>
 
-  <!-- FINAL WAITLIST -->
-
-  <section class="waitlist" id="waitlist">
-    <div class="waitlist-count">🎉 142 couples already waiting</div>
-    <div class="section-title">Ready to be honest?</div>
-    <p class="waitlist-sub">Join the waitlist and get early access when we launch this summer. Free during beta.</p>
-    <div class="waitlist-form">
-      <input class="waitlist-input" type="email" id="emailInput" placeholder="your@email.com"/>
-      <button class="btn-primary" onclick="handleSubmit()">Join</button>
+  <!-- mood check-in -->
+  <div class="feat-card">
+    <div class="feat-icon-box fi-pk">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="#E85D75" stroke-width="1.8"/>
+        <path d="M8.5 14.5S9.5 16 12 16s3.5-1.5 3.5-1.5" stroke="#E85D75" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="9.5" cy="10.5" r="1.2" fill="#E85D75"/>
+        <circle cx="14.5" cy="10.5" r="1.2" fill="#E85D75"/>
+      </svg>
     </div>
-    <div class="waitlist-note">Free during beta · iOS & Android · No spam.</div>
-    <div class="success-msg" id="successMsg">✓ You're on the list. See you on the other side.</div>
-  </section>
+    <strong>mood check-ins</strong>
+    <p>share how you're feeling. your partner always knows.</p>
+  </div>
 
-  <footer>
-    <div class="footer-logo">breakup<span>.</span></div>
-    <div class="footer-note">The app that keeps you together. © 2026 breakup.</div>
-  </footer>
+  <!-- weekly wrapped -->
+  <div class="feat-card">
+    <div class="feat-icon-box fi-g">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="3" width="18" height="18" rx="4" stroke="#4CAF82" stroke-width="1.8"/>
+        <path d="M7 14l3-3 2 2 4-5" stroke="#4CAF82" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <strong>weekly wrapped</strong>
+    <p>a shareable monthly report of your habits as a couple.</p>
+  </div>
 
-  <script>
-    // cursor
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
-    document.querySelectorAll('a, button, .faq-q, .shows-card, .step, .who-card, .testimonial').forEach(el => {
-      el.addEventListener('mouseenter', () => { cursor.style.width = '40px'; cursor.style.height = '40px'; cursor.style.background = 'var(--yellow)'; });
-      el.addEventListener('mouseleave', () => { cursor.style.width = '20px'; cursor.style.height = '20px'; cursor.style.background = 'var(--red)'; });
-    });
+  <!-- wide: couples leaderboard -->
+  <div class="feat-card wide">
+    <div class="feat-icon-box fi-y">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="9" y="3" width="6" height="18" rx="2" stroke="#B8860B" stroke-width="1.8"/>
+        <rect x="3" y="8" width="6" height="13" rx="2" stroke="#B8860B" stroke-width="1.8"/>
+        <rect x="15" y="6" width="6" height="15" rx="2" stroke="#B8860B" stroke-width="1.8"/>
+      </svg>
+    </div>
+    <div class="feat-card-body">
+      <strong>couples leaderboard 🏆</strong>
+      <p>monthly ranking of the most transparent couples. top pairs win prizes. could you be the #1 couple?</p>
+      <div class="coming-soon-badge">✦ coming soon</div>
+    </div>
+  </div>
 
-    function handleSubmit() {
-      const input = document.getElementById('emailInput');
-      const msg = document.getElementById('successMsg');
-      if (!input.value || !input.value.includes('@')) { input.style.borderColor = 'var(--red)'; setTimeout(() => input.style.borderColor = 'var(--black)', 1000); return; }
-      document.querySelector('.waitlist-form').style.display = 'none';
-      msg.style.display = 'block';
+  <!-- incognito detection -->
+  <div class="feat-card">
+    <div class="feat-icon-box fi-p">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z" stroke="#7C5CBF" stroke-width="1.8"/>
+        <path d="M9 9h.01M15 9h.01" stroke="#7C5CBF" stroke-width="2" stroke-linecap="round"/>
+        <path d="M7 14s1 3 5 3 5-3 5-3" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M3 3l18 18" stroke="#7C5CBF" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <strong>incognito detection</strong>
+    <p>see when private browsing was used and for how long.</p>
+    <div class="coming-soon-badge">✦ coming soon</div>
+  </div>
+
+  <!-- AI weekly roast -->
+  <div class="feat-card">
+    <div class="feat-icon-box fi-r">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2l1.5 4H18l-3.5 2.5 1.5 4L12 10l-4 2.5 1.5-4L6 6h4.5L12 2z" stroke="#E85D75" stroke-width="1.6" stroke-linejoin="round" fill="none"/>
+        <path d="M8 18c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="#E85D75" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <strong>ai weekly roast 🔥</strong>
+    <p>a brutally honest AI summary of both your screen habits.</p>
+    <div class="coming-soon-badge">✦ coming soon</div>
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <div class="footer">breakup. — the app that keeps you together 🩷<br/>© 2026 breakup. · ios & android · summer 2026</div>
+</div>
+
+<script>
+  function setToggle(btn, val) {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function handleSubmit() {
+    const email = document.getElementById('emailInput').value.trim();
+    const name  = document.getElementById('nameInput').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('emailInput').focus();
+      document.getElementById('emailInput').style.borderColor = 'var(--red)';
+      setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 1500);
+      return;
     }
+    document.getElementById('formContent').classList.add('hide');
+    document.getElementById('successState').classList.add('show');
+    launchConfetti();
+  }
 
-    function handleHero() {
-      const input = document.getElementById('heroEmail');
-      if (!input.value || !input.value.includes('@')) { input.style.borderColor = 'var(--red)'; setTimeout(() => input.style.borderColor = 'var(--black)', 1000); return; }
-      input.parentElement.innerHTML = '<div style="font-family:Fraunces,serif;font-style:italic;color:var(--red);font-size:18px;font-weight:700;padding:14px 0;">✓ You\'re on the list!</div>';
+  function launchConfetti() {
+    const colors = ['#E85D75','#5B9BD5','#4CAF82','#FFD166','#C4A8FF'];
+    for (let i = 0; i < 60; i++) {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.cssText = `
+        left: ${Math.random()*100}vw;
+        top: ${Math.random()*30 + 20}vh;
+        background: ${colors[Math.floor(Math.random()*colors.length)]};
+        border-radius: ${Math.random()>0.5?'50%':'2px'};
+        width: ${Math.random()*8+6}px;
+        height: ${Math.random()*8+6}px;
+        animation: confettiFall ${Math.random()*1.5+0.8}s ease forwards;
+        animation-delay: ${Math.random()*0.4}s;
+      `;
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(), 2500);
     }
+  }
 
-    function handleBand(inputId, successId) {
-      const input = document.getElementById(inputId);
-      if (!input.value || !input.value.includes('@')) { input.style.borderColor = 'var(--red)'; setTimeout(() => input.style.borderColor = 'var(--black)', 1000); return; }
-      input.parentElement.style.display = 'none';
-      document.getElementById(successId).style.display = 'block';
+  const styleEl = document.createElement('style');
+  styleEl.textContent = `
+    @keyframes confettiFall {
+      0%   { opacity:1; transform: translateY(0) rotate(0deg) scale(1); }
+      100% { opacity:0; transform: translateY(200px) rotate(${Math.random()*360}deg) scale(0.5); }
     }
-
-    function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
-
-    // scroll animations
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'translateY(0)'; }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.step, .who-card, .testimonial, .shows-card, .honest-row').forEach(el => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      observer.observe(el);
-    });
-  </script>
+  `;
+  document.head.appendChild(styleEl);
+</script>
 
 </body>
 </html>
